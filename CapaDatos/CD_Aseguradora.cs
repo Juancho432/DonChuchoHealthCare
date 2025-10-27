@@ -58,7 +58,7 @@ namespace CapaDatos
             }
         }
 
-        // ✅ Eliminar Aseguradora
+        //Eliminar Aseguradora
         public void EliminarAseguradora(int idAseguradora)
         {
             using (MySqlConnection con = new MySqlConnection(cadena))
@@ -72,7 +72,7 @@ namespace CapaDatos
             }
         }
 
-        // ✅ Buscar Aseguradora por ID
+        //Buscar Aseguradora por ID
         public DataTable BuscarAseguradora(int idAseguradora)
         {
             DataTable dt = new DataTable();
@@ -88,7 +88,7 @@ namespace CapaDatos
             return dt;
         }
 
-        // ✅ Buscar Aseguradora por nombre o correo
+        //Buscar Aseguradora por nombre o correo
         public DataTable BuscarAseguradoraAvanzado(string nombre, string correo)
         {
             DataTable dt = new DataTable();
@@ -109,7 +109,7 @@ namespace CapaDatos
             return dt;
         }
 
-        // ✅ Listar todas las Aseguradoras
+        //Listar todas las Aseguradoras
         public DataTable ListarAseguradoras()
         {
             DataTable dt = new DataTable();
