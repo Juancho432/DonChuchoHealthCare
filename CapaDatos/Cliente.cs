@@ -8,15 +8,15 @@ namespace CapaDatos
 {
     public class Cliente
     {
-        public string IdCliente { get; set; }           
-        public string TipoDocumento { get; set; }       // CC, CE, NIT, Pasaporte
-        public string Nombre { get; set; }
-        public string Apellidos { get; set; }
-        public DateTime? FechaNacimiento { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Correo { get; set; }
-        public string HistorialCrediticio { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public string id_cliente { get; set; }           
+        public string tipo_documento { get; set; }       // CC, CE, NIT, Pasaporte
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
+        public DateTime? fecha_nacimiento { get; set; }
+        public string direccion { get; set; }
+        public string telefono { get; set; }
+        public string correo { get; set; }
+        public string historial_crediticio { get; set; }
+        public DateTime fecha_registro { get; set; }
     }
 }

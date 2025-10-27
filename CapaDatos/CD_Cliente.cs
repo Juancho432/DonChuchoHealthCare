@@ -25,15 +25,15 @@ namespace CapaDatos
                         VALUES (@id, @tipo, @nombre, @apellidos, @fecha, @direccion, @telefono, @correo, @historial)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@id", c.IdCliente);
-                cmd.Parameters.AddWithValue("@tipo", c.TipoDocumento);
-                cmd.Parameters.AddWithValue("@nombre", c.Nombre);
-                cmd.Parameters.AddWithValue("@apellidos", c.Apellidos);
-                cmd.Parameters.AddWithValue("@fecha", c.FechaNacimiento);
-                cmd.Parameters.AddWithValue("@direccion", c.Direccion);
-                cmd.Parameters.AddWithValue("@telefono", c.Telefono);
-                cmd.Parameters.AddWithValue("@correo", c.Correo);
-                cmd.Parameters.AddWithValue("@historial", c.HistorialCrediticio);
+                cmd.Parameters.AddWithValue("@id", c.id_cliente);
+                cmd.Parameters.AddWithValue("@tipo", c.tipo_documento);
+                cmd.Parameters.AddWithValue("@nombre", c.nombre);
+                cmd.Parameters.AddWithValue("@apellidos", c.apellidos);
+                cmd.Parameters.AddWithValue("@fecha", c.fecha_nacimiento);
+                cmd.Parameters.AddWithValue("@direccion", c.direccion);
+                cmd.Parameters.AddWithValue("@telefono", c.telefono);
+                cmd.Parameters.AddWithValue("@correo", c.correo);
+                cmd.Parameters.AddWithValue("@historial", c.historial_crediticio);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -52,15 +52,15 @@ namespace CapaDatos
                         WHERE id_cliente=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@id", c.IdCliente);
-                cmd.Parameters.AddWithValue("@tipo", c.TipoDocumento);
-                cmd.Parameters.AddWithValue("@nombre", c.Nombre);
-                cmd.Parameters.AddWithValue("@apellidos", c.Apellidos);
-                cmd.Parameters.AddWithValue("@fecha", c.FechaNacimiento);
-                cmd.Parameters.AddWithValue("@direccion", c.Direccion);
-                cmd.Parameters.AddWithValue("@telefono", c.Telefono);
-                cmd.Parameters.AddWithValue("@correo", c.Correo);
-                cmd.Parameters.AddWithValue("@historial", c.HistorialCrediticio);
+                cmd.Parameters.AddWithValue("@id", c.id_cliente);
+                cmd.Parameters.AddWithValue("@tipo", c.tipo_documento);
+                cmd.Parameters.AddWithValue("@nombre", c.nombre);
+                cmd.Parameters.AddWithValue("@apellidos", c.apellidos);
+                cmd.Parameters.AddWithValue("@fecha", c.fecha_nacimiento);
+                cmd.Parameters.AddWithValue("@direccion", c.direccion);
+                cmd.Parameters.AddWithValue("@telefono", c.telefono);
+                cmd.Parameters.AddWithValue("@correo", c.correo);
+                cmd.Parameters.AddWithValue("@historial", c.historial_crediticio);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
