@@ -112,8 +112,44 @@ namespace CapaDatos
             }
             return dt;
         }
+
+        public DataTable ObtenerHistorialCrediticio(string idCliente)
+        {
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection con = new MySqlConnection(cadena))
+            {
+                string sql = @"
+            SELECT 
+                c.id_cliente,
+                CONCAT(c.nombre, ' ', c.apellidos) AS cliente,
+                s.nombre AS seguro,
+                p.numero_poliza,
+                pa.fecha_pago,
+                pa.fecha_vencimiento,
+                pa.monto,
+                pa.estado_pago
+            FROM clientes c
+            INNER JOIN polizas p ON c.id_cliente = p.id_cliente
+            INNER JOIN seguros s ON p.id_seguro = s.id_seguro
+            LEFT JOIN pagos pa ON p.id_poliza = pa.id_poliza
+            WHERE c.id_cliente = @idCliente
+            ORDER BY pa.fecha_pago DESC;";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@idCliente", idCliente);
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+
+
+
     }
 
-    //Hacer consulta del historial
+
 }
 
