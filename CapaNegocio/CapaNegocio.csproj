@@ -190,11 +190,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Aseguradora.cs" />
     <Compile Include="CN_Cliente.cs" />
     <Compile Include="CN_Informe.cs" />
     <Compile Include="CN_Pago.cs" />
     <Compile Include="CN_Poliza.cs" />
     <Compile Include="CN_Seguro.cs" />
+    <Compile Include="CN_Usuario.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

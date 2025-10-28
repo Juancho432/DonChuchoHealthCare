@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
 
     public enum EstadoPoliza
     {
-        vigente,
-        en_renovacion,
-        cancelada_vencida,
-        cancelada_impago,
-        cancelada_peticion
+        Vigente,
+        Vencida,
+        Renovacion,
+        Cancelada
     }
 
     public struct Poliza
     {
-        public string id;
-        public Cliente cliente;
+        public int id_poliza;
+        public string numero_poliza;
+        public string id_cliente;
+        public int id_seguro;
+        public DateTime fecha_inicio;
+        public DateTime fecha_fin;
         public EstadoPoliza estado;
         public DateTime vencimiento;
+        public string motivo_cancelacion;
+        public DateTime fecha_creacion;
     }
 
     public class CN_Poliza
