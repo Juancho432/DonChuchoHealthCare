@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
-    public class Class1
+
+    public struct Seguro
+    {
+        
+    }
+    public class CN_Seguro
     {
     }
 }
