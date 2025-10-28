@@ -90,13 +90,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aseguradora.cs" />
     <Compile Include="CD_Aseguradora.cs" />
     <Compile Include="CD_Cliente.cs" />
+    <Compile Include="CD_Pago.cs" />
+    <Compile Include="CD_Poliza.cs" />
     <Compile Include="CD_Seguro.cs" />
-    <Compile Include="Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seguros.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
