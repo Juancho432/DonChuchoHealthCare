@@ -21,8 +21,8 @@ namespace CapaDatos
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
                 sql = @"INSERT INTO clientes 
-                        (id_cliente, tipo_documento, nombre, apellidos, fecha_nacimiento, direccion, telefono, correo, historial_crediticio)
-                        VALUES (@id, @tipo, @nombre, @apellidos, @fecha, @direccion, @telefono, @correo, @historial)";
+                        (id_cliente, tipo_documento, nombre, apellidos, fecha_nacimiento, direccion, telefono, correo)
+                        VALUES (@id, @tipo, @nombre, @apellidos, @fecha, @direccion, @telefono, @correo)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id", c.id_cliente);
@@ -33,7 +33,6 @@ namespace CapaDatos
                 cmd.Parameters.AddWithValue("@direccion", c.direccion);
                 cmd.Parameters.AddWithValue("@telefono", c.telefono);
                 cmd.Parameters.AddWithValue("@correo", c.correo);
-                cmd.Parameters.AddWithValue("@historial", c.historial_crediticio);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -48,7 +47,7 @@ namespace CapaDatos
                 sql = @"UPDATE clientes 
                         SET tipo_documento=@tipo, nombre=@nombre, apellidos=@apellidos, 
                             fecha_nacimiento=@fecha, direccion=@direccion, telefono=@telefono, 
-                            correo=@correo, historial_crediticio=@historial
+                            correo=@correo
                         WHERE id_cliente=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -60,7 +59,6 @@ namespace CapaDatos
                 cmd.Parameters.AddWithValue("@direccion", c.direccion);
                 cmd.Parameters.AddWithValue("@telefono", c.telefono);
                 cmd.Parameters.AddWithValue("@correo", c.correo);
-                cmd.Parameters.AddWithValue("@historial", c.historial_crediticio);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -152,4 +150,3 @@ namespace CapaDatos
 
 
 }
-

@@ -16,7 +16,6 @@ namespace CapaDatos
         public string direccion { get; set; }
         public string telefono { get; set; }
         public string correo { get; set; }
-        public string historial_crediticio { get; set; }
         public DateTime fecha_registro { get; set; }
     }
 }
