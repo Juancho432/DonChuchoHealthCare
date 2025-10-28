@@ -114,5 +114,6 @@ namespace CapaDatos
         }
     }
 
+    //Hacer consulta del historial
 }
 
