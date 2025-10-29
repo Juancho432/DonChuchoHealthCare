@@ -8,6 +8,8 @@ using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 
+using CapaNegocio;
+
 namespace CapaDatos
 {
     public class CD_Seguro
@@ -26,7 +28,7 @@ namespace CapaDatos
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@nombre", s.nombre);
-                cmd.Parameters.AddWithValue("@tipo", s.tipo);
+                cmd.Parameters.AddWithValue("@tipo", s.tipo_seguro);
                 cmd.Parameters.AddWithValue("@cobertura", s.cobertura);
                 cmd.Parameters.AddWithValue("@costo", s.costo);
                 cmd.Parameters.AddWithValue("@duracion", s.duracion_meses);
@@ -54,7 +56,7 @@ namespace CapaDatos
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@nombre", s.nombre);
-                cmd.Parameters.AddWithValue("@tipo", s.tipo);
+                cmd.Parameters.AddWithValue("@tipo", s.tipo_seguro);
                 cmd.Parameters.AddWithValue("@cobertura", s.cobertura);
                 cmd.Parameters.AddWithValue("@costo", s.costo);
                 cmd.Parameters.AddWithValue("@duracion", s.duracion_meses);
