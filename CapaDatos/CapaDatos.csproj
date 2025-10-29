@@ -94,7 +94,9 @@
     <Compile Include="CD_Cliente.cs" />
     <Compile Include="CD_Pago.cs" />
     <Compile Include="CD_Poliza.cs" />
+    <Compile Include="CD_Reporte.cs" />
     <Compile Include="CD_Seguro.cs" />
+    <Compile Include="CD_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
