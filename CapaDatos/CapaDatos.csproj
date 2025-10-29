@@ -94,12 +94,20 @@
     <Compile Include="CD_Cliente.cs" />
     <Compile Include="CD_Pago.cs" />
     <Compile Include="CD_Poliza.cs" />
+    <Compile Include="CD_Reporte.cs" />
     <Compile Include="CD_Seguro.cs" />
+    <Compile Include="CD_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{11a346c2-023f-482c-abdc-4f729dcb368f}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

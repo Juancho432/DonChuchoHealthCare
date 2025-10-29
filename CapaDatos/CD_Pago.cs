@@ -8,6 +8,8 @@ using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 
+using CapaNegocio;
+
 namespace CapaDatos
 {
     public class CD_Pago
@@ -29,7 +31,6 @@ namespace CapaDatos
                 cmd.Parameters.AddWithValue("@id_cliente", pago.id_cliente);
                 cmd.Parameters.AddWithValue("@id_usuario", pago.id_usuario);
                 cmd.Parameters.AddWithValue("@fecha_pago", pago.fecha_pago);
-                cmd.Parameters.AddWithValue("@fecha_vencimiento", pago.fecha_vencimiento);
                 cmd.Parameters.AddWithValue("@monto", pago.monto);
                 cmd.Parameters.AddWithValue("@forma_pago", pago.forma_pago);
                 cmd.Parameters.AddWithValue("@numero_comprobante", pago.numero_comprobante);
@@ -63,7 +64,6 @@ namespace CapaDatos
                 cmd.Parameters.AddWithValue("@id_cliente", pago.id_cliente);
                 cmd.Parameters.AddWithValue("@id_usuario", pago.id_usuario);
                 cmd.Parameters.AddWithValue("@fecha_pago", pago.fecha_pago);
-                cmd.Parameters.AddWithValue("@fecha_vencimiento", pago.fecha_vencimiento);
                 cmd.Parameters.AddWithValue("@monto", pago.monto);
                 cmd.Parameters.AddWithValue("@forma_pago", pago.forma_pago);
                 cmd.Parameters.AddWithValue("@numero_comprobante", pago.numero_comprobante);
