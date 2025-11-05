@@ -114,6 +114,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Clientes.aspx" />
+    <Content Include="css\Clientes.css" />
+    <Content Include="css\Default.css" />
+    <Content Include="css\Informes.css" />
+    <Content Include="css\Login.css" />
+    <Content Include="css\Pagos.css" />
+    <Content Include="css\Polizas.css" />
+    <Content Include="css\Seguros.css" />
+    <Content Include="css\Site.css" />
     <Content Include="Informes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Polizas.aspx" />
@@ -191,9 +199,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Css\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

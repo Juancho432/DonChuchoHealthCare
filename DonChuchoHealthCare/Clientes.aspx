@@ -1,127 +1,9 @@
 ﻿<%@ Page Title="Gestión de Clientes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clientes.aspx.cs" Inherits="DonChuchoHealthCare.Clientes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        /* ======== ESTILOS GENERALES ======== */
-        .clientes-container {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        /* ======== ACORDEÓN ======== */
-        .accordion-section {
-            background-color: #1c2541;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            background-color: #3a506b;
-            color: #5bc0be;
-            padding: 15px 20px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            user-select: none;
-        }
-
-        .accordion-header:hover {
-            background-color: #465d7a;
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 1s ease, padding 0.3s ease;
-            background-color: #1c2541;
-            padding: 0 20px;
-        }
-
-        .accordion-content.open {
-            max-height: 1000px;
-            padding: 20px;
-        }
-
-        /* ======== FORMULARIO ======== */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group select {
-            background-color: #3a506b;
-            border: 1px solid #5bc0be;
-            color: white;
-            border-radius: 8px;
-            padding: 10px;
-            font-size: 15px;
-        }
-
-        .form-group input::placeholder {
-            color: #b0c4d4;
-        }
-
-        .btn-group {
-            margin-top: 20px;
-        }
-
-        .btn {
-            background-color: #5bc0be;
-            color: #0b132b;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            margin-right: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #4aa3a1;
-        }
-
-        /* ======== TABLAS ======== */
-        .gridview {
-            width: 100%;
-            color: #fff;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .gridview th {
-            background-color: #3a506b;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .gridview td {
-            padding: 10px;
-            background-color: #1c2541;
-            border-top: 1px solid #3a506b;
-        }
-
-        .gridview tr:hover td {
-            background-color: #3a506b;
-        }
-    </style>
+    <link href="css/Clientes.css" rel="stylesheet" />
 
     <script>
-        // ======== SCRIPT DE ACORDEÓN ========
         document.addEventListener('DOMContentLoaded', function () {
             const headers = document.querySelectorAll('.accordion-header');
             headers.forEach(header => {
@@ -132,7 +14,10 @@
             });
         });
     </script>
+
 </asp:Content>
+
+
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="clientes-container">
@@ -141,7 +26,6 @@
         <div class="accordion-section">
             <div class="accordion-header">Registro de cliente</div>
             <div class="accordion-content">
-
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="txt_id">ID (Documento)</label>
@@ -201,19 +85,17 @@
         <div class="accordion-section">
             <div class="accordion-header">Administración de clientes</div>
             <div class="accordion-content">
-
                 <div class="form-group" style="max-width: 300px;">
                     <label for="txt_buscarId">Buscar por ID (documento):</label>
                     <asp:TextBox ID="txt_buscarId" runat="server" placeholder="Ingrese el ID del cliente"></asp:TextBox>
                 </div>
 
                 <div class="btn-group" style="margin-bottom: 20px;">
-                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
+                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" />
                     <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" Enabled="false" />
                     <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" Enabled="false" />
                 </div>
 
-                <!-- CAMPOS DE INFORMACIÓN DEL CLIENTE (DESHABILITADOS POR DEFECTO) -->
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="txt_id_admin">ID (Documento)</label>
