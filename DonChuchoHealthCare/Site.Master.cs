@@ -7,34 +7,23 @@ namespace DonChuchoHealthCare
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] != null)
-            {
-                pnlLogin.Visible = false;
-                pnlPrincipal.Visible = true;
-            }
-            else
-            {
-                pnlLogin.Visible = true;
-                pnlPrincipal.Visible = false;
-            }
-        }
+            string paginaActual = Page.AppRelativeVirtualPath.ToLower();
 
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            // Validación simulada
-            if (txtUsuario.Text == "admin" && txtClave.Text == "1234")
+            // Permitir solo acceso al login sin sesión
+            if (Session["usuario"] == null && !paginaActual.Contains("login.aspx"))
             {
-                Session["Usuario"] = txtUsuario.Text;
-                pnlLogin.Visible = false;
-                pnlPrincipal.Visible = true;
+                Response.Redirect("Login.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+            // Cerrar sesión
+            Session.Clear();
             Session.Abandon();
-            pnlLogin.Visible = true;
-            pnlPrincipal.Visible = false;
+            Response.Redirect("Login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

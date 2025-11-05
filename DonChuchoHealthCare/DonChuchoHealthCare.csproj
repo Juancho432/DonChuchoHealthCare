@@ -115,6 +115,7 @@
   <ItemGroup>
     <Content Include="Clientes.aspx" />
     <Content Include="Informes.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Polizas.aspx" />
     <Content Include="Seguros.aspx" />
     <Content Include="Web.config" />
@@ -135,6 +136,13 @@
     </Compile>
     <Compile Include="Informes.aspx.designer.cs">
       <DependentUpon>Informes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Polizas.aspx.cs">
       <DependentUpon>Polizas.aspx</DependentUpon>

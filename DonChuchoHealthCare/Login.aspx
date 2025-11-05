@@ -1,0 +1,106 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="DonChuchoHealthCare.Login" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Inicio de Sesión - Don Chucho HealthCare</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0b132b, #1c2541, #3a506b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .login-container {
+            background-color: rgba(28, 37, 65, 0.95);
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 380px;
+        }
+
+        .login-container h1 {
+            color: #5bc0be;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .login-container p {
+            color: #a9bcd0;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #a9bcd0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #5bc0be;
+            background-color: #3a506b;
+            color: white;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: #5bc0be;
+            color: #0b132b;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #4aa3a1;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div class="login-container">
+            <h1>Don Chucho HealthCare</h1>
+            <p>Tu sistema de gestión médica y de seguros confiable</p>
+
+            <div class="form-group">
+                <label for="txt_usuario">Usuario</label>
+                <asp:TextBox ID="txt_usuario" runat="server" placeholder="Ingrese su usuario"></asp:TextBox>
+            </div>
+
+            <div class="form-group">
+                <label for="txt_contraseña">Contraseña</label>
+                <asp:TextBox ID="txt_contraseña" runat="server" TextMode="Password" placeholder="Ingrese su contraseña"></asp:TextBox>
+            </div>
+
+            <asp:Button ID="btn_ingresar" runat="server" Text="Iniciar sesión" CssClass="btn-login" OnClick="btn_ingresar_Click" />
+            <asp:Label ID="lbl_mensaje" runat="server" CssClass="error"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
