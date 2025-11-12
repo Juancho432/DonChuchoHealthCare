@@ -5,28 +5,22 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title>Inicio de Sesión - Don Chucho HealthCare</title>
-    <link href="~/css/Login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/login.css" />
 </head>
 
-
-<body>
+<body class="login-body">
     <form id="form1" runat="server">
         <div class="login-container">
-            <h1>Don Chucho HealthCare</h1>
-            <p>Tu sistema de gestión médica y de seguros confiable</p>
+            <div class="login-card">
+                <h1>Don Chucho HealthCare</h1>
+                <h3>“Cuidamos lo que más valoras”</h3>
 
-            <div class="form-group">
-                <label for="txt_usuario">Usuario</label>
-                <asp:TextBox ID="txt_usuario" runat="server" placeholder="Ingrese su usuario"></asp:TextBox>
+                <asp:TextBox ID="txtUsuario" runat="server" placeholder="Usuario" CssClass="login-input"></asp:TextBox>
+                <asp:TextBox ID="txtClave" runat="server" TextMode="Password" placeholder="Contraseña" CssClass="login-input"></asp:TextBox>
+
+                <asp:Button ID="btnIngresar" runat="server" Text="Iniciar sesión" CssClass="btn-login" OnClick="btnIngresar_Click" />
+                <asp:Label ID="lblMensaje" runat="server" CssClass="login-error"></asp:Label>
             </div>
-
-            <div class="form-group">
-                <label for="txt_contraseña">Contraseña</label>
-                <asp:TextBox ID="txt_contraseña" runat="server" TextMode="Password" placeholder="Ingrese su contraseña"></asp:TextBox>
-            </div>
-
-            <asp:Button ID="btn_ingresar" runat="server" Text="Iniciar sesión" CssClass="btn-login" OnClick="btn_ingresar_Click" />
-            <asp:Label ID="lbl_mensaje" runat="server" CssClass="error"></asp:Label>
         </div>
     </form>
 </body>

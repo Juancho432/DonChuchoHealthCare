@@ -1,72 +1,68 @@
-﻿body {
+﻿.login-body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0b132b, #1c2541, #3a506b);
+    background: linear-gradient(160deg, #0b132b, #1c2541, #3a506b);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: white;
 }
 
 .login-container {
-    background-color: rgba(28, 37, 65, 0.95);
-    padding: 40px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background: #1c2541;
+    padding: 50px 70px;
     border-radius: 15px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     text-align: center;
-    width: 380px;
+    color: #e0e0e0;
 }
 
-    .login-container h1 {
+    .login-card h1 {
         color: #5bc0be;
+        font-size: 32px;
         margin-bottom: 10px;
-        font-size: 28px;
     }
 
-    .login-container p {
-        color: #a9bcd0;
-        margin-bottom: 25px;
-        font-size: 15px;
+    .login-card h3 {
+        color: #9caebd;
+        font-weight: normal;
+        margin-bottom: 30px;
     }
 
-.form-group {
+.login-input {
+    width: 100%;
+    padding: 12px;
     margin-bottom: 15px;
-    text-align: left;
+    border: 1px solid #5bc0be;
+    border-radius: 8px;
+    background-color: #3a506b;
+    color: white;
+    font-size: 15px;
 }
-
-    .form-group label {
-        font-size: 14px;
-        color: #a9bcd0;
-    }
-
-    .form-group input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #5bc0be;
-        background-color: #3a506b;
-        color: white;
-    }
 
 .btn-login {
-    width: 100%;
     background-color: #5bc0be;
     color: #0b132b;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 12px 25px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
+    width: 100%;
     transition: background-color 0.3s;
-    margin-top: 10px;
 }
 
     .btn-login:hover {
         background-color: #4aa3a1;
     }
 
-.error {
+.login-error {
     color: #ff6b6b;
     font-size: 14px;
     margin-top: 10px;

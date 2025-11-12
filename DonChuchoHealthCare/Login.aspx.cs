@@ -1,32 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace DonChuchoHealthCare
 {
-    public partial class Login : Page
+    public partial class Login : System.Web.UI.Page
     {
-        protected void btn_ingresar_Click(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            string usuario = txt_usuario.Text;
-            string contraseña = txt_contraseña.Text;
-
-            // Simulación de login sin base de datos
-            if (usuario == "admin" && contraseña == "1234")
+            // Si ya hay sesión activa, redirige directamente al Dashboard
+            if (Session["Usuario"] != null)
             {
-                // Guardar usuario en la sesión
-                Session["usuario"] = usuario;
-
-                // Redirigir al panel principal
-                Response.Redirect("Default.aspx", false);
-                Context.ApplicationInstance.CompleteRequest(); // Evita re-ejecución del ciclo
+                Response.Redirect("Default.aspx");
             }
-            else
+        }
+
+        protected void btnIngresar_Click(object sender, EventArgs e)
+        {
+            string user = txtUsuario.Text.Trim();
+            string pass = txtClave.Text.Trim();
+
+            using (SqlConnection con = new SqlConnection(
+                System.Configuration.ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
-                lbl_mensaje.Text = "Usuario o contraseña incorrectos.";
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM usuarios WHERE username=@u AND clave=@c", con);
+                cmd.Parameters.AddWithValue("@u", user);
+                cmd.Parameters.AddWithValue("@c", pass);
+                int count = (int)cmd.ExecuteScalar();
+
+                if (count == 1)
+                {
+                    FormsAuthentication.SetAuthCookie(user, false);
+                    Session["Usuario"] = user;
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+                    lblMensaje.Text = "⚠️ Usuario o contraseña incorrectos.";
+                }
             }
         }
     }

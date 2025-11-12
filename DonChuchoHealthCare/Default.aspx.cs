@@ -11,7 +11,12 @@ namespace DonChuchoHealthCare
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            // Si no hay sesión activa, redirigir al Login
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
         }
     }
 }
