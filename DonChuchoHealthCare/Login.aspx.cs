@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Web;
 using System.Web.Security;
+using CapaNegocio;
 
 namespace DonChuchoHealthCare
 {
     public partial class Login : System.Web.UI.Page
     {
+        CN_Login objCN = new CN_Login();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Si ya hay sesión activa, redirige directamente al Dashboard
@@ -21,25 +22,11 @@ namespace DonChuchoHealthCare
             string user = txtUsuario.Text.Trim();
             string pass = txtClave.Text.Trim();
 
-            using (SqlConnection con = new SqlConnection(
-                System.Configuration.ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            if (objCN.Autenticar(user, pass))
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM usuarios WHERE username=@u AND clave=@c", con);
-                cmd.Parameters.AddWithValue("@u", user);
-                cmd.Parameters.AddWithValue("@c", pass);
-                int count = (int)cmd.ExecuteScalar();
-
-                if (count == 1)
-                {
-                    FormsAuthentication.SetAuthCookie(user, false);
-                    Session["Usuario"] = user;
-                    Response.Redirect("Default.aspx");
-                }
-                else
-                {
-                    lblMensaje.Text = "⚠️ Usuario o contraseña incorrectos.";
-                }
+                FormsAuthentication.SetAuthCookie(user, false);
+                Session["Usuario"] = user;
+                Response.Redirect("Default.aspx");
             }
         }
     }

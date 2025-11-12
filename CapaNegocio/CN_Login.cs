@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using CapaDatos;
 
 namespace CapaNegocio
 {
     public class CN_Login
     {
-        public void Autenticar(string usuario, string contrasena)
-        {
 
+        private readonly CD_Usuario objCD = new CD_Usuario();
+
+        public bool Autenticar(string usuario, string contrasena)
+        {
+            return true;
         }
 
         public String CrearHash(string data)

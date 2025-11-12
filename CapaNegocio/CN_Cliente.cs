@@ -12,5 +12,10 @@ namespace CapaNegocio
         {
             objCD.InsertarCliente(data);
         }
+
+        public Cliente BuscarCliente(string id)
+        {
+            return objCD.BuscarCliente(id);
+        }
     }
 }

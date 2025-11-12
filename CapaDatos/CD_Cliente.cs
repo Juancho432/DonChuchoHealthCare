@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
@@ -76,7 +77,7 @@ namespace CapaDatos
         }
 
         //Buscar Cliente por documento
-        public DataTable BuscarCliente(string idCliente)
+        public Cliente BuscarCliente(string idCliente)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(cadena))
@@ -88,7 +89,28 @@ namespace CapaDatos
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);
             }
-            return dt;
+
+            if (dt.Rows.Count == 0)
+            {
+                throw new Exception("Sin resultados");
+            }
+            else
+            {
+                DataRow data = dt.Rows[0];
+                return new Cliente
+                {
+                    id_cliente = data["id_cliente"].ToString(),
+                    tipo_documento = (Tipo_Documento)int.Parse(data["tipo_documento"].ToString()),
+                    nombre = data["nombre"].ToString(),
+                    apellidos = data["apellidos"].ToString(),
+                    fecha_nacimiento = DateTime.Parse(data["fecha_nacimiento"].ToString()),
+                    direccion = data["direccion"].ToString(),
+                    telefono = data["telefono"].ToString(),
+                    correo = data["correo"].ToString(),
+                    fecha_registro = DateTime.Parse(data["fecha_registro"].ToString()),
+
+                };
+            }
         }
 
         //Listar todos los clientes
