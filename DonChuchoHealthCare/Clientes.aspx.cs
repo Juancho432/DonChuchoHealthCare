@@ -1,24 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using CapaNegocio;
+using Entidades;
 
 namespace DonChuchoHealthCare
 {
     public partial class Clientes : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        private readonly CN_Cliente objCN = new CN_Cliente();
+
+        public void btn_guardar_Click(object sender, EventArgs e)
         {
+            objCN.CrearCliente(new Cliente
+            {
+                id_cliente = txt_id.Text,
+                tipo_documento = (Tipo_Documento)ddl_tipoDocumento.SelectedIndex,
+                nombre = txt_nombres.Text,
+                apellidos = txt_apellidos.Text,
+                fecha_nacimiento = DateTime.Parse(txt_fechaNacimiento.Text),
+                direccion = txt_direccion.Text,
+                telefono = txt_telefono.Text,
+                correo = Email.ComprobarCorreo(txt_correo.Text) ? txt_correo.Text : null,
+                fecha_registro = DateTime.Today
+            });
         }
 
-        protected void btn_guardar_Click(object sender, EventArgs e)
-        {
-            // Guardar nuevo cliente (lógica futura)
-        }
-
-        protected void btn_limpiar_Click(object sender, EventArgs e)
+        public void btn_limpiar_Click(object sender, EventArgs e)
         {
             txt_id.Text = "";
             ddl_tipoDocumento.SelectedIndex = 0;
@@ -30,7 +37,7 @@ namespace DonChuchoHealthCare
             txt_correo.Text = "";
         }
 
-        protected void btn_buscar_Click(object sender, EventArgs e)
+        public void btn_buscar_Click(object sender, EventArgs e)
         {
             // Simulación: validar que haya escrito un ID
             if (string.IsNullOrWhiteSpace(txt_buscarId.Text))
@@ -61,7 +68,5 @@ namespace DonChuchoHealthCare
             btn_actualizar.Enabled = true;
             btn_eliminar.Enabled = true;
         }
-
-
     }
 }

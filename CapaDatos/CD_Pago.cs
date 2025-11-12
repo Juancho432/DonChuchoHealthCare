@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
-
-using CapaNegocio;
+using Entidades;
 
 namespace CapaDatos
 {
     public class CD_Pago
     {
         private readonly string cadena = ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
-        private string sql = "";
 
         //INSERTAR
         public void Insertar(Pago pago)

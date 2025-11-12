@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" />
+                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" OnClick="btn_guardar_Click" />
                     <asp:Button ID="btn_limpiar" runat="server" Text="🧹 Limpiar" CssClass="btn" />
                 </div>
             </div>
