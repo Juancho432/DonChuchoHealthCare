@@ -100,7 +100,7 @@ namespace CapaDatos
                 return new Cliente
                 {
                     id_cliente = data["id_cliente"].ToString(),
-                    tipo_documento = (Tipo_Documento)int.Parse(data["tipo_documento"].ToString()),
+                    tipo_documento = (Tipo_Documento)Enum.Parse(typeof(Tipo_Documento), data["tipo_documento"].ToString()),
                     nombre = data["nombre"].ToString(),
                     apellidos = data["apellidos"].ToString(),
                     fecha_nacimiento = DateTime.Parse(data["fecha_nacimiento"].ToString()),
