@@ -49,7 +49,7 @@ namespace CapaDatos
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id", c.id_cliente);
-                cmd.Parameters.AddWithValue("@tipo", c.tipo_documento);
+                cmd.Parameters.AddWithValue("@tipo", (int)c.tipo_documento);
                 cmd.Parameters.AddWithValue("@nombre", c.nombre);
                 cmd.Parameters.AddWithValue("@apellidos", c.apellidos);
                 cmd.Parameters.AddWithValue("@fecha", c.fecha_nacimiento);
