@@ -17,5 +17,11 @@ namespace CapaNegocio
         {
             return objCD.BuscarCliente(id);
         }
+
+        public bool ActualizarCliente(Cliente data)
+        {
+            objCD.ActualizarCliente(data);
+            return true;
+        }
     }
 }
