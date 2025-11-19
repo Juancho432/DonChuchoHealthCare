@@ -91,6 +91,13 @@
         background-color: #4aa3a1;
     }
 
+.msg-busqueda {
+    color: #ff6b6b;
+    font-size: 15px;
+    margin-bottom: 15px;
+    display: block;
+}
+
 /* ======== TABLAS ======== */
 .gridview {
     width: 100%;

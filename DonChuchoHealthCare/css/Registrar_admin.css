@@ -1,0 +1,83 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0b132b, #1c2541, #3a506b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.reg-container {
+    background-color: rgba(28, 37, 65, 0.92);
+    padding: 45px 55px;
+    width: 480px;
+    border-radius: 18px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+    .reg-container h1 {
+        color: #5bc0be;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    .reg-container p {
+        color: #a9bcd0;
+        margin-bottom: 25px;
+    }
+
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+    .form-group label {
+        display: block;
+        color: #dbe4ea;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #5bc0be;
+        background-color: #3a506b;
+        color: white;
+        font-size: 15px;
+    }
+
+.btn-registrar {
+    width: 100%;
+    padding: 13px;
+    background-color: #5bc0be;
+    color: #0b132b;
+    border-radius: 8px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+    .btn-registrar:hover {
+        background-color: #4aa3a1;
+    }
+
+.msg {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.msg-error {
+    color: #ff6b6b;
+}
+
+.msg-ok {
+    color: #92f5b4;
+}

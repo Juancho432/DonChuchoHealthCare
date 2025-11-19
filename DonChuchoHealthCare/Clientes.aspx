@@ -92,6 +92,8 @@
 
                 <div class="btn-group" style="margin-bottom: 20px;">
                     <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
+                    <asp:Label ID="lbl_mensaje" runat="server" CssClass="msg-busqueda"></asp:Label>
+
                     <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" Enabled="false" />
                     <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" Enabled="false" />
                 </div>
