@@ -1,13 +1,39 @@
-﻿using System;
-using System.Web.UI;
-using CapaNegocio;
+﻿using CapaNegocio;
 using Entidades;
+using System;
+using System.Web.UI;
 
 namespace DonChuchoHealthCare
 {
     public partial class Clientes : Page
     {
         private readonly CN_Cliente objCN = new CN_Cliente();
+
+        private void RestaurarCampos()
+        {
+            // limpiar campos
+            txt_id_admin.Text = "";
+            ddl_tipoDocumento_admin.SelectedIndex = 0;
+            txt_nombres_admin.Text = "";
+            txt_apellidos_admin.Text = "";
+            txt_fechaNacimiento_admin.Text = "";
+            txt_direccion_admin.Text = "";
+            txt_telefono_admin.Text = "";
+            txt_correo_admin.Text = "";
+
+            // deshabilitar edición
+            ddl_tipoDocumento_admin.Enabled = false;
+            txt_id_admin.ReadOnly = true;
+            txt_nombres_admin.ReadOnly = true;
+            txt_apellidos_admin.ReadOnly = true;
+            txt_fechaNacimiento_admin.ReadOnly = true;
+            txt_direccion_admin.ReadOnly = true;
+            txt_telefono_admin.ReadOnly = true;
+            txt_correo_admin.ReadOnly = true;
+
+            btn_actualizar.Enabled = false;
+            btn_eliminar.Enabled = false;
+        }
 
         protected void Page_Load(object sender, EventArgs e) { }
 
@@ -56,7 +82,7 @@ namespace DonChuchoHealthCare
                 return;
             }
 
-            Cliente data = null;
+            Cliente? data;
 
             try
             {
@@ -68,60 +94,38 @@ namespace DonChuchoHealthCare
                 return;
             }
 
-            if (data == null)
+            if (data is Cliente cliente)
+            {
+                /* --- Si existe el cliente, llenar los campos --- */
+                txt_id_admin.Text = cliente.id_cliente;
+                ddl_tipoDocumento_admin.SelectedIndex = (int)cliente.tipo_documento + 1;
+                txt_nombres_admin.Text = cliente.nombre;
+                txt_apellidos_admin.Text = cliente.apellidos;
+                txt_fechaNacimiento_admin.Text = cliente.fecha_nacimiento.ToString("yyyy-MM-dd");
+                txt_direccion_admin.Text = cliente.direccion;
+                txt_telefono_admin.Text = cliente.telefono;
+                txt_correo_admin.Text = cliente.correo;
+
+                // habilitar edición
+                ddl_tipoDocumento_admin.Enabled = true;
+                txt_nombres_admin.ReadOnly = false;
+                txt_apellidos_admin.ReadOnly = false;
+                txt_fechaNacimiento_admin.ReadOnly = false;
+                txt_direccion_admin.ReadOnly = false;
+                txt_telefono_admin.ReadOnly = false;
+                txt_correo_admin.ReadOnly = false;
+
+                btn_actualizar.Enabled = true;
+                btn_eliminar.Enabled = true;
+
+                lbl_mensaje.Text = "";
+                
+            }
+            else
             {
                 lbl_mensaje.Text = "❌ No se encontró ningún cliente con ese ID.";
-
-                // limpiar campos
-                txt_id_admin.Text = "";
-                ddl_tipoDocumento_admin.SelectedIndex = 0;
-                txt_nombres_admin.Text = "";
-                txt_apellidos_admin.Text = "";
-                txt_fechaNacimiento_admin.Text = "";
-                txt_direccion_admin.Text = "";
-                txt_telefono_admin.Text = "";
-                txt_correo_admin.Text = "";
-
-                // deshabilitar edición
-                ddl_tipoDocumento_admin.Enabled = false;
-                txt_id_admin.ReadOnly = true;
-                txt_nombres_admin.ReadOnly = true;
-                txt_apellidos_admin.ReadOnly = true;
-                txt_fechaNacimiento_admin.ReadOnly = true;
-                txt_direccion_admin.ReadOnly = true;
-                txt_telefono_admin.ReadOnly = true;
-                txt_correo_admin.ReadOnly = true;
-
-                btn_actualizar.Enabled = false;
-                btn_eliminar.Enabled = false;
-
-                return;
+                RestaurarCampos();
             }
-
-            /* --- Si existe el cliente, llenar los campos --- */
-            txt_id_admin.Text = data.id_cliente;
-            ddl_tipoDocumento_admin.SelectedIndex = (int)data.tipo_documento;
-            txt_nombres_admin.Text = data.nombre;
-            txt_apellidos_admin.Text = data.apellidos;
-            txt_fechaNacimiento_admin.Text = data.fecha_nacimiento.ToString("yyyy-MM-dd");
-            txt_direccion_admin.Text = data.direccion;
-            txt_telefono_admin.Text = data.telefono;
-            txt_correo_admin.Text = data.correo;
-
-            // habilitar edición
-            ddl_tipoDocumento_admin.Enabled = true;
-            txt_id_admin.ReadOnly = false;
-            txt_nombres_admin.ReadOnly = false;
-            txt_apellidos_admin.ReadOnly = false;
-            txt_fechaNacimiento_admin.ReadOnly = false;
-            txt_direccion_admin.ReadOnly = false;
-            txt_telefono_admin.ReadOnly = false;
-            txt_correo_admin.ReadOnly = false;
-
-            btn_actualizar.Enabled = true;
-            btn_eliminar.Enabled = true;
-
-            lbl_mensaje.Text = "";
         }
 
         /* ------------------------- ACTUALIZAR ------------------------- */
@@ -130,7 +134,7 @@ namespace DonChuchoHealthCare
             Cliente data = new Cliente()
             {
                 id_cliente = txt_id_admin.Text,
-                tipo_documento = (Tipo_Documento)ddl_tipoDocumento_admin.SelectedIndex,
+                tipo_documento = (Tipo_Documento)ddl_tipoDocumento_admin.SelectedIndex - 1,
                 nombre = txt_nombres_admin.Text,
                 apellidos = txt_apellidos_admin.Text,
                 fecha_nacimiento = DateTime.Parse(txt_fechaNacimiento_admin.Text),
@@ -139,9 +143,22 @@ namespace DonChuchoHealthCare
                 correo = txt_correo_admin.Text
             };
 
-            objCN.ActualizarCliente(data);
+            if (objCN.ActualizarCliente(data))
+            {
+                lbl_mensaje.Text = "✔️ Cliente actualizado correctamente.";
+            }
+            else
+            {
+                lbl_mensaje.Text = "❌ No se puedo actualizar los datos.";
+            }
 
-            lbl_mensaje.Text = "✔️ Cliente actualizado correctamente.";
+            
+        }
+
+        protected void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            objCN.EliminarCliente(txt_id_admin.Text);
+            RestaurarCampos();
         }
     }
 }

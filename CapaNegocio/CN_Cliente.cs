@@ -23,5 +23,10 @@ namespace CapaNegocio
             objCD.ActualizarCliente(data);
             return true;
         }
+
+        public void EliminarCliente(string id)
+        {
+            objCD.EliminarCliente(id);
+        }
     }
 }

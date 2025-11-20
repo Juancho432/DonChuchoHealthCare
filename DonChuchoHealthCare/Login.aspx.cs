@@ -14,20 +14,20 @@ namespace DonChuchoHealthCare
             if (!IsPostBack)
             {
                 // 1. Verificar si existen usuarios en la BBDD
-                using (SqlConnection con = new SqlConnection(
-                    System.Configuration.ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM usuarios", con);
-                    int total = (int)cmd.ExecuteScalar();
+                //using (SqlConnection con = new SqlConnection(
+                //    System.Configuration.ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+                //{
+                //    con.Open();
+                //    SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM usuarios", con);
+                //    int total = (int)cmd.ExecuteScalar();
 
-                    if (total == 0)
-                    {
-                        // No hay usuarios → Redirigir al registro de administrador
-                        Response.Redirect("RegistrarAdmin.aspx");
-                        return;
-                    }
-                }
+                //    if (total == 0)
+                //    {
+                //       // No hay usuarios → Redirigir al registro de administrador
+                //        Response.Redirect("RegistrarAdmin.aspx");
+                //        return;
+                //    }
+                //}
 
                 // 2. Si ya existe sesión activa → Mandar al Dashboard
                 if (Session["Usuario"] != null)

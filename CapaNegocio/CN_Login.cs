@@ -30,5 +30,10 @@ namespace CapaNegocio
             return result.ToString();
 
         }
+    
+        public bool ComprobarAdmins()
+        {
+            return true;
+        }
     }
 }

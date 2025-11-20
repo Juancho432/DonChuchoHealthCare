@@ -75,8 +75,8 @@
                 </div>
 
                 <div class="btn-group">
-                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" OnClick="Btn_guardar_Click" />
-                    <asp:Button ID="btn_limpiar" runat="server" Text="🧹 Limpiar" CssClass="btn" OnClick="Btn_limpiar_Click" />
+                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" OnClick="btn_guardar_Click" />
+                    <asp:Button ID="btn_limpiar" runat="server" Text="🧹 Limpiar" CssClass="btn" OnClick="btn_limpiar_Click" />
                 </div>
             </div>
         </div>
@@ -94,8 +94,8 @@
                     <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
                     <asp:Label ID="lbl_mensaje" runat="server" CssClass="msg-busqueda"></asp:Label>
 
-                    <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" Enabled="false" />
-                    <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" Enabled="false" />
+                    <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" Enabled="false" OnClick="btn_actualizar_Click" />
+                    <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" Enabled="false" OnClick="btn_eliminar_Click" />
                 </div>
 
                 <div class="form-grid">
