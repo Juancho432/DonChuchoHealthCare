@@ -153,6 +153,11 @@
             <div class="accordion-header">Historial de pólizas del cliente seleccionado</div>
             <div class="accordion-content">
                 <asp:GridView ID="gv_polizas" runat="server" CssClass="gridview"></asp:GridView>
+                <asp:ObjectDataSource ID="PolizaDS" runat="server" SelectMethod="GetData" TypeName="Entidades.Poliza">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="txt_id_admin" Name="id" PropertyName="Text" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
 

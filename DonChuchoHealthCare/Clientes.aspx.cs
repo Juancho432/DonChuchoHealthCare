@@ -7,7 +7,8 @@ namespace DonChuchoHealthCare
 {
     public partial class Clientes : Page
     {
-        private readonly CN_Cliente objCN = new CN_Cliente();
+        private readonly CN_Cliente objCN_Cliente = new CN_Cliente();
+        private readonly CN_Poliza objCN_Poliza = new CN_Poliza();
 
         private void RestaurarCampos()
         {
@@ -35,12 +36,16 @@ namespace DonChuchoHealthCare
             btn_eliminar.Enabled = false;
         }
 
-        protected void Page_Load(object sender, EventArgs e) { }
+        protected void Page_Load(object sender, EventArgs e) 
+        {
+            gv_clientes.DataSource = objCN_Cliente.ListarClientes();
+            gv_clientes.DataBind();
+        }
 
         /* ------------------------- GUARDAR ------------------------- */
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            objCN.CrearCliente(new Cliente
+            objCN_Cliente.CrearCliente(new Cliente
             {
                 id_cliente = txt_id.Text,
                 tipo_documento = (Tipo_Documento)ddl_tipoDocumento.SelectedIndex,
@@ -86,7 +91,7 @@ namespace DonChuchoHealthCare
 
             try
             {
-                data = objCN.BuscarCliente(txt_buscarId.Text);
+                data = objCN_Cliente.BuscarCliente(txt_buscarId.Text);
             }
             catch (Exception ex)
             {
@@ -119,7 +124,9 @@ namespace DonChuchoHealthCare
                 btn_eliminar.Enabled = true;
 
                 lbl_mensaje.Text = "";
-                
+
+                gv_polizas.DataSource = objCN_Poliza.ListarPolizas(cliente.id_cliente);
+                gv_polizas.DataBind();
             }
             else
             {
@@ -143,7 +150,7 @@ namespace DonChuchoHealthCare
                 correo = txt_correo_admin.Text
             };
 
-            if (objCN.ActualizarCliente(data))
+            if (objCN_Cliente.ActualizarCliente(data))
             {
                 lbl_mensaje.Text = "✔️ Cliente actualizado correctamente.";
             }
@@ -157,7 +164,7 @@ namespace DonChuchoHealthCare
 
         protected void btn_eliminar_Click(object sender, EventArgs e)
         {
-            objCN.EliminarCliente(txt_id_admin.Text);
+            objCN_Cliente.EliminarCliente(txt_id_admin.Text);
             RestaurarCampos();
         }
     }

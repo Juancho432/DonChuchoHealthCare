@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using CapaDatos;
 using Entidades;
 
@@ -27,6 +28,11 @@ namespace CapaNegocio
         public void EliminarCliente(string id)
         {
             objCD.EliminarCliente(id);
+        }
+
+        public DataTable ListarClientes()
+        {
+            return objCD.ListarClientes();
         }
     }
 }
