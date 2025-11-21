@@ -15,7 +15,7 @@ namespace CapaNegocio
             return true;
         }
 
-        public String CrearHash(string data)
+        public string CrearHash(string data)
         {
             SHA256 hash = SHA256.Create();
             byte[] data_bytes = Encoding.UTF8.GetBytes(data);
@@ -33,7 +33,7 @@ namespace CapaNegocio
     
         public bool ComprobarAdmins()
         {
-            return true;
+            return objCD.ExisteAdministrador();
         }
     }
 }

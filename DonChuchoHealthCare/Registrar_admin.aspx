@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarAdmin.aspx.cs" Inherits="DonChuchoHealthCare.RegistrarAdmin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrar_admin.aspx.cs" Inherits="DonChuchoHealthCare.Registrar_admin" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -62,6 +62,4 @@
         </div>
     </form>
 </body>
-</html>
-
 </html>

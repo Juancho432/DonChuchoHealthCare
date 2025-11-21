@@ -11,7 +11,7 @@ namespace DonChuchoHealthCare
 {
 
 
-    public partial class RegistrarAdmin
+    public partial class Registrar_admin
     {
 
         /// <summary>

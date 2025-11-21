@@ -126,7 +126,7 @@
     <Content Include="Informes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Polizas.aspx" />
-    <Content Include="Registar_admin.aspx" />
+    <Content Include="Registrar_admin.aspx" />
     <Content Include="Seguros.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -162,12 +162,12 @@
       <DependentUpon>Polizas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registar_admin.aspx.cs">
-      <DependentUpon>Registar_admin.aspx</DependentUpon>
+    <Compile Include="Registrar_admin.aspx.cs">
+      <DependentUpon>Registrar_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registar_admin.aspx.designer.cs">
-      <DependentUpon>Registar_admin.aspx</DependentUpon>
+    <Compile Include="Registrar_admin.aspx.designer.cs">
+      <DependentUpon>Registrar_admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seguros.aspx.cs">
       <DependentUpon>Seguros.aspx</DependentUpon>
