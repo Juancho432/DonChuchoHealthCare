@@ -68,13 +68,7 @@
                         </asp:DropDownList>
                     </div>
 
-                    <div class="form-group">
-                        <label for="ddl_estado">Estado</label>
-                        <asp:DropDownList ID="ddl_estado" runat="server">
-                            <asp:ListItem Text="Activo" Value="Activo"></asp:ListItem>
-                            <asp:ListItem Text="Inactivo" Value="Inactivo"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
+                   
 
                     <div class="form-group">
                         <label for="txt_beneficios">Beneficios</label>

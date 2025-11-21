@@ -15,6 +15,24 @@ namespace DonChuchoHealthCare
     {
 
         /// <summary>
+        /// Control hfAccordion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfAccordion;
+
+        /// <summary>
+        /// Control lbl_msgRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgRegistro;
+
+        /// <summary>
         /// Control txt_id.
         /// </summary>
         /// <remarks>
@@ -105,6 +123,15 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.Button btn_limpiar;
 
         /// <summary>
+        /// Control lbl_mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_mensaje;
+
+        /// <summary>
         /// Control txt_buscarId.
         /// </summary>
         /// <remarks>
@@ -121,15 +148,6 @@ namespace DonChuchoHealthCare
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_buscar;
-
-        /// <summary>
-        /// Control lbl_mensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_mensaje;
 
         /// <summary>
         /// Control btn_actualizar.
@@ -222,6 +240,15 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.TextBox txt_correo_admin;
 
         /// <summary>
+        /// Control lbl_msgPolizas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgPolizas;
+
+        /// <summary>
         /// Control gv_polizas.
         /// </summary>
         /// <remarks>
@@ -232,12 +259,14 @@ namespace DonChuchoHealthCare
 
         /// <summary>
         /// Control PolizaDS.
+        /// Control lbl_msgLista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource PolizaDS;
+        protected global::System.Web.UI.WebControls.Label lbl_msgLista;
 
         /// <summary>
         /// Control gv_clientes.

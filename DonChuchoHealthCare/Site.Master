@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Don Chucho HealthCare</title>
 
-    <link href="css/site.css" rel="stylesheet" />
-<asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" />
-
+   
+    <link href="~/css/Site.css" rel="stylesheet" runat="server" />
 
     <asp:ContentPlaceHolder ID="head" runat="server" />
 </head>

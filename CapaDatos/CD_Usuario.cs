@@ -166,5 +166,25 @@ namespace CapaDatos
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        //Verificar si existen admins
+        public bool ExisteAdministrador()
+        {
+            int cantidad = 0;
+
+            using (MySqlConnection con = new MySqlConnection(cadena))
+            {
+                sql = "SELECT COUNT(*) FROM usuarios WHERE rol = @rol";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@rol", (int)Rol_Usuario.Administrador);
+
+                con.Open();
+                cantidad = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            return cantidad > 0;
+        }
+
     }
 }

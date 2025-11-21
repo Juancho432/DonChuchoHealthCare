@@ -69,15 +69,6 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.DropDownList ddl_aseguradora;
 
         /// <summary>
-        /// Control ddl_estado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_estado;
-
-        /// <summary>
         /// Control txt_beneficios.
         /// </summary>
         /// <remarks>
