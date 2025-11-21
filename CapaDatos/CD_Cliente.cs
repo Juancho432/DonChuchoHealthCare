@@ -35,8 +35,8 @@ namespace CapaDatos
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
                 sql = @"INSERT INTO clientes 
-                        (id_cliente, tipo_documento, nombre, apellidos, fecha_nacimiento, direccion, telefono, correo)
-                        VALUES (@id, @tipo, @nombre, @apellidos, @fecha, @direccion, @telefono, @correo)";
+                        (id_cliente, tipo_documento, nombre, apellidos, fecha_nacimiento, direccion, telefono, correo, estado)
+                        VALUES (@id, @tipo, @nombre, @apellidos, @fecha, @direccion, @telefono, @correo, 1)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id", c.id_cliente);

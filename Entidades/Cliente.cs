@@ -10,6 +10,13 @@ namespace Entidades
         Pasaporte
     }
 
+    public enum Estado_Cliente
+    {
+        Inactivo = 0,
+        Activo = 1
+    }
+
+
     public struct Cliente
     {
         public string id_cliente;
@@ -21,5 +28,7 @@ namespace Entidades
         public string telefono;
         public string correo;
         public DateTime fecha_registro;
+        public Estado_Cliente estado;
+
     }
 }
