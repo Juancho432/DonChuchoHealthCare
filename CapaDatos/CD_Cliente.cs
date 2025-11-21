@@ -12,6 +12,23 @@ namespace CapaDatos
         private readonly string cadena = ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
         private string sql = "";
 
+        //Metodo para convertir DataRow a Cliente
+        private Cliente ConvertirFilaACliente(DataRow data)
+        {
+            return new Cliente
+            {
+                id_cliente = data["id_cliente"].ToString(),
+                tipo_documento = (Tipo_Documento)Convert.ToInt32(data["tipo_documento"]),
+                nombre = data["nombre"].ToString(),
+                apellidos = data["apellidos"].ToString(),
+                fecha_nacimiento = Convert.ToDateTime(data["fecha_nacimiento"]),
+                direccion = data["direccion"].ToString(),
+                telefono = data["telefono"].ToString(),
+                correo = data["correo"].ToString(),
+                fecha_registro = Convert.ToDateTime(data["fecha_registro"])
+            };
+        }
+
         //Insertar Cliente
         public void InsertarCliente(Cliente c)
         {
@@ -62,27 +79,28 @@ namespace CapaDatos
             }
         }
 
-        //Eliminar Cliente
-        public void EliminarCliente(string idCliente)
+        //Listar solo los clientes activos
+        public DataTable ListarActivos()
         {
+            DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
-                sql = @"DELETE FROM clientes WHERE id_cliente=@id";
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@id", idCliente);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
+                sql = "SELECT * FROM clientes WHERE estado = 1";
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, con);
+                da.Fill(dt);
             }
+            return dt;
         }
 
-        //Buscar Cliente por documento
+        //Buscar solo los clientes activos
         public Cliente BuscarCliente(string idCliente)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
-                sql = @"SELECT * FROM clientes WHERE id_cliente=@id";
+                sql = @"SELECT * FROM clientes 
+                        WHERE id_cliente=@id AND estado = 1";
+
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id", idCliente);
 
@@ -91,44 +109,82 @@ namespace CapaDatos
             }
 
             if (dt.Rows.Count == 0)
-            {
-                throw new Exception("Sin resultados");
-            }
-            else
-            {
-                DataRow data = dt.Rows[0];
-                return new Cliente
-                {
-                    id_cliente = data["id_cliente"].ToString(),
-                    tipo_documento = (Tipo_Documento)Enum.Parse(typeof(Tipo_Documento), data["tipo_documento"].ToString()),
-                    nombre = data["nombre"].ToString(),
-                    apellidos = data["apellidos"].ToString(),
-                    fecha_nacimiento = DateTime.Parse(data["fecha_nacimiento"].ToString()),
-                    direccion = data["direccion"].ToString(),
-                    telefono = data["telefono"].ToString(),
-                    correo = data["correo"].ToString(),
-                    fecha_registro = DateTime.Parse(data["fecha_registro"].ToString()),
+                return default; // No lanza excepción → se maneja en la capa presentación
 
-                };
-            }
+            return ConvertirFilaACliente(dt.Rows[0]);
         }
 
-        //Listar todos los clientes
-        public DataTable ListarClientes()
+        //Buscar clientes, incluyendo los clientes inactivos
+        public Cliente BuscarIncluyendoInactivos(string idCliente)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
-                sql = @"SELECT id_cliente, tipo_documento, nombre, apellidos, telefono, correo, fecha_registro 
-                        FROM clientes ORDER BY fecha_registro DESC";
+                sql = @"SELECT * FROM clientes 
+                        WHERE id_cliente=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@id", idCliente);
+
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);
             }
-            return dt;
+
+            if (dt.Rows.Count == 0)
+                return default;
+
+            return ConvertirFilaACliente(dt.Rows[0]);
         }
 
+        //Eliminar cliente (dejarlo en estado inactivo)
+        public bool Eliminar(string idCliente)
+        {
+            using (MySqlConnection con = new MySqlConnection(cadena))
+            {
+                sql = @"UPDATE clientes SET estado = 0
+                        WHERE id_cliente=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@id", idCliente);
+
+                con.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        //Restaurar estado de cliente
+        public bool RestaurarCliente(string idCliente)
+        {
+            using (MySqlConnection con = new MySqlConnection(cadena))
+            {
+                sql = @"UPDATE clientes SET estado = 1
+                        WHERE id_cliente=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@id", idCliente);
+
+                con.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        //Verificar si existe un cliente
+        public bool ExisteCliente(string id)
+        {
+            using (MySqlConnection con = new MySqlConnection(cadena))
+            {
+                sql = "SELECT COUNT(*) FROM clientes WHERE id_cliente=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                con.Open();
+                int cantidad = Convert.ToInt32(cmd.ExecuteScalar());
+                return cantidad > 0;
+            }
+        }
+
+        //Obtener historial crediticio
         public DataTable ObtenerHistorialCrediticio(string idCliente)
         {
             DataTable dt = new DataTable();
