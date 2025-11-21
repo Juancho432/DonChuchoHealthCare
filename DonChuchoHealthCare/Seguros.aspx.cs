@@ -26,7 +26,6 @@ namespace DonChuchoHealthCare
             txt_costo.Text = "";
             txt_duracion.Text = "";
             ddl_aseguradora.SelectedIndex = 0;
-            ddl_estado.SelectedIndex = 0;
             txt_beneficios.Text = "";
             txt_exclusiones.Text = "";
             txt_condiciones.Text = "";

@@ -5,27 +5,56 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
             const headers = document.querySelectorAll('.accordion-header');
-            headers.forEach(header => {
+            const contents = document.querySelectorAll('.accordion-content');
+            const hf = document.getElementById('<%= hfAccordion.ClientID %>');
+
+            headers.forEach((header, index) => {
                 header.addEventListener('click', () => {
                     const content = header.nextElementSibling;
-                    content.classList.toggle('open');
+                    const isOpen = content.classList.contains('open');
+
+                    // Cerrar todos
+                    contents.forEach(c => c.classList.remove('open'));
+
+                    // Abrir solo el seleccionado
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        hf.value = index;
+                    } else {
+                        hf.value = "";
+                    }
                 });
             });
+
+            // Reabrir accordion desde HiddenField después del PostBack
+            if (hf.value !== "") {
+                contents[hf.value].classList.add('open');
+            }
+
         });
     </script>
-
 </asp:Content>
 
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Campo oculto para recordar cuál accordion está abierto -->
+    <asp:HiddenField ID="hfAccordion" runat="server" />
+
     <div class="clientes-container">
 
-        <!-- REGISTRO DE CLIENTE -->
+        <!-- ========================================================= -->
+        <!-- =============== REGISTRO DE CLIENTE ===================== -->
+        <!-- ========================================================= -->
         <div class="accordion-section">
             <div class="accordion-header">Registro de cliente</div>
+
             <div class="accordion-content">
+                <asp:Label ID="lbl_msgRegistro" runat="server" CssClass="msg"></asp:Label>
+
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="txt_id">ID (Documento)</label>
@@ -81,10 +110,17 @@
             </div>
         </div>
 
-        <!-- ADMINISTRACIÓN DE CLIENTES -->
+
+        <!-- ========================================================= -->
+        <!-- =========== ADMINISTRACIÓN DE CLIENTES ================== -->
+        <!-- ========================================================= -->
         <div class="accordion-section">
             <div class="accordion-header">Administración de clientes</div>
+
             <div class="accordion-content">
+                
+                <asp:Label ID="lbl_mensaje" runat="server" CssClass="msg"></asp:Label>
+
                 <div class="form-group" style="max-width: 300px;">
                     <label for="txt_buscarId">Buscar por ID (documento):</label>
                     <asp:TextBox ID="txt_buscarId" runat="server" placeholder="Ingrese el ID del cliente"></asp:TextBox>
@@ -92,20 +128,18 @@
 
                 <div class="btn-group" style="margin-bottom: 20px;">
                     <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
-                    <asp:Label ID="lbl_mensaje" runat="server" CssClass="msg-busqueda"></asp:Label>
-
                     <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" Enabled="false" OnClick="btn_actualizar_Click" />
                     <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" Enabled="false" OnClick="btn_eliminar_Click" />
                 </div>
 
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="txt_id_admin">ID (Documento)</label>
+                        <label>ID (Documento)</label>
                         <asp:TextBox ID="txt_id_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <label for="ddl_tipoDocumento_admin">Tipo de documento</label>
+                        <label>Tipo de documento</label>
                         <asp:DropDownList ID="ddl_tipoDocumento_admin" runat="server" Enabled="false">
                             <asp:ListItem Text="Seleccionar..." Value=""></asp:ListItem>
                             <asp:ListItem Text="Cédula de ciudadanía (CC)" Value="CC"></asp:ListItem>
@@ -116,42 +150,47 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="txt_nombres_admin">Nombres</label>
+                        <label>Nombres</label>
                         <asp:TextBox ID="txt_nombres_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <label for="txt_apellidos_admin">Apellidos</label>
+                        <label>Apellidos</label>
                         <asp:TextBox ID="txt_apellidos_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <label for="txt_fechaNacimiento_admin">Fecha de nacimiento</label>
+                        <label>Fecha de nacimiento</label>
                         <asp:TextBox ID="txt_fechaNacimiento_admin" runat="server" TextMode="Date" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <label for="txt_direccion_admin">Dirección</label>
+                        <label>Dirección</label>
                         <asp:TextBox ID="txt_direccion_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <label for="txt_telefono_admin">Teléfono</label>
+                        <label>Teléfono</label>
                         <asp:TextBox ID="txt_telefono_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <label for="txt_correo_admin">Correo electrónico</label>
+                        <label>Correo electrónico</label>
                         <asp:TextBox ID="txt_correo_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- HISTORIAL DE PÓLIZAS -->
+
+        <!-- ========================================================= -->
+        <!-- ================ HISTORIAL DE PÓLIZAS =================== -->
+        <!-- ========================================================= -->
         <div class="accordion-section">
             <div class="accordion-header">Historial de pólizas del cliente seleccionado</div>
+
             <div class="accordion-content">
+                <asp:Label ID="lbl_msgPolizas" runat="server" CssClass="msg"></asp:Label>
                 <asp:GridView ID="gv_polizas" runat="server" CssClass="gridview"></asp:GridView>
                 <asp:ObjectDataSource ID="PolizaDS" runat="server" SelectMethod="GetData" TypeName="Entidades.Poliza">
                     <SelectParameters>
@@ -161,13 +200,19 @@
             </div>
         </div>
 
-        <!-- LISTADO GENERAL -->
+
+        <!-- ========================================================= -->
+        <!-- ================= LISTADO GENERAL ======================== -->
+        <!-- ========================================================= -->
         <div class="accordion-section">
             <div class="accordion-header">Listado general de clientes</div>
+
             <div class="accordion-content">
+                <asp:Label ID="lbl_msgLista" runat="server" CssClass="msg"></asp:Label>
                 <asp:GridView ID="gv_clientes" runat="server" CssClass="gridview"></asp:GridView>
             </div>
         </div>
 
     </div>
+
 </asp:Content>

@@ -5,7 +5,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title>Inicio de Sesión - Don Chucho HealthCare</title>
-    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="~/css/Login.css" runat="server" />
 </head>
 
 <body class="login-body">
