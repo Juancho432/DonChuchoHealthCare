@@ -177,7 +177,7 @@ namespace CapaDatos
                 sql = "SELECT COUNT(*) FROM usuarios WHERE rol = @rol";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
 
-                cmd.Parameters.AddWithValue("@rol", (int)Rol_Usuario.Administrador);
+                cmd.Parameters.AddWithValue("@rol", Rol_Usuario.Administrador.ToString());
 
                 con.Open();
                 cantidad = Convert.ToInt32(cmd.ExecuteScalar());

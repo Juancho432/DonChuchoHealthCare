@@ -27,12 +27,12 @@ namespace CapaNegocio
 
         public void EliminarCliente(string id)
         {
-            objCD.EliminarCliente(id);
+            objCD.Eliminar(id);
         }
 
         public DataTable ListarClientes()
         {
-            return objCD.ListarClientes();
+            return objCD.ListarActivos();
         }
     }
 }

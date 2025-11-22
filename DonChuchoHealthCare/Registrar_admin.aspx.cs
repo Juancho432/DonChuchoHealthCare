@@ -21,7 +21,7 @@ namespace DonChuchoHealthCare
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
 
-            if (txtClave.Text == txtConfirmar.Text)
+            if (txtClave.Text == txtConfirmar.Text && !string.IsNullOrEmpty(txtClave.Text))
             {
                 Usuario data = new Usuario
                 {

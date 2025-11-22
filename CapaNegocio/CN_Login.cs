@@ -13,6 +13,7 @@ namespace CapaNegocio
         public bool Autenticar(string usuario, string contrasena)
         {
             return true;
+            //return !(objCD.ValidarUsuario(usuario, CrearHash(contrasena)) is null);
         }
 
         public string CrearHash(string data)
