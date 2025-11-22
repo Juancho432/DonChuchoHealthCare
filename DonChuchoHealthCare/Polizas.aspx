@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" />
+                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" OnClick="btn_guardar_Click" />
                     <asp:Button ID="btn_limpiar" runat="server" Text="🧹 Limpiar" CssClass="btn" />
                 </div>
             </div>
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="btn-group" style="margin-bottom:15px;">
-                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" />
+                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
                     <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" />
                     <asp:Button ID="btn_cancelar" runat="server" Text="❌ Cancelar póliza" CssClass="btn" />
                 </div>
@@ -103,10 +103,10 @@
                     <div class="form-group">
                         <label for="ddl_estado_admin">Estado actual</label>
                         <asp:DropDownList ID="ddl_estado_admin" runat="server" Enabled="false">
-                            <asp:ListItem Text="Vigente" Value="Vigente"></asp:ListItem>
-                            <asp:ListItem Text="Vencida" Value="Vencida"></asp:ListItem>
-                            <asp:ListItem Text="Renovación" Value="Renovacion"></asp:ListItem>
-                            <asp:ListItem Text="Cancelada" Value="Cancelada"></asp:ListItem>
+                            <asp:ListItem Text="Vigente" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Vencida" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Renovación" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Cancelada" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
