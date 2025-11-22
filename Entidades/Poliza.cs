@@ -19,7 +19,6 @@ namespace Entidades
         public DateTime fecha_inicio;
         public DateTime fecha_fin;
         public EstadoPoliza estado;
-        public DateTime vencimiento;
         public string motivo_cancelacion;
         public DateTime fecha_creacion;
     }

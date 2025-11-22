@@ -49,7 +49,6 @@ namespace DonChuchoHealthCare
                 fecha_inicio = Convert.ToDateTime(txt_fecha_inicio.Text),
                 fecha_fin = Convert.ToDateTime(txt_fecha_fin.Text),
                 estado = EstadoPoliza.Vigente,
-                vencimiento = Convert.ToDateTime(txt_fecha_fin.Text),
                 fecha_creacion = DateTime.Now
             };
 
