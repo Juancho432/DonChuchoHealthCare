@@ -18,7 +18,7 @@ namespace CapaDatos
             return new Cliente
             {
                 id_cliente = data["id_cliente"].ToString(),
-                tipo_documento = (Tipo_Documento)Convert.ToInt32(data["tipo_documento"]),
+                tipo_documento = (Tipo_Documento)Enum.Parse(typeof(Tipo_Documento), data["tipo_documento"].ToString()),
                 nombre = data["nombre"].ToString(),
                 apellidos = data["apellidos"].ToString(),
                 fecha_nacimiento = Convert.ToDateTime(data["fecha_nacimiento"]),
@@ -66,7 +66,7 @@ namespace CapaDatos
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id", c.id_cliente);
-                cmd.Parameters.AddWithValue("@tipo", (int)c.tipo_documento);
+                cmd.Parameters.AddWithValue("@tipo", c.tipo_documento.ToString());
                 cmd.Parameters.AddWithValue("@nombre", c.nombre);
                 cmd.Parameters.AddWithValue("@apellidos", c.apellidos);
                 cmd.Parameters.AddWithValue("@fecha", c.fecha_nacimiento);
