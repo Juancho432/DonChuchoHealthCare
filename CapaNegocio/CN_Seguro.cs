@@ -19,5 +19,10 @@ namespace CapaNegocio
             objCD.InsertarSeguro(seguro);
             return true; 
         }
+
+        public Seguro BuscarSeguro(int id)
+        {
+            return objCD.BuscarSeguro(id);
+        }
     }
 }

@@ -34,12 +34,6 @@
                     <div class="form-group">
                         <label for="ddl_tipo">Tipo de seguro</label>
                         <asp:DropDownList ID="ddl_tipo" runat="server">
-                            <asp:ListItem Text="Seleccionar..." Value=""></asp:ListItem>
-                            <asp:ListItem Text="Vida" Value="Vida"></asp:ListItem>
-                            <asp:ListItem Text="Salud" Value="Salud"></asp:ListItem>
-                            <asp:ListItem Text="Automóvil" Value="Automóvil"></asp:ListItem>
-                            <asp:ListItem Text="Hogar" Value="Hogar"></asp:ListItem>
-                            <asp:ListItem Text="Otro" Value="Otro"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
@@ -62,9 +56,6 @@
                         <label for="ddl_aseguradora">Aseguradora</label>
                         <asp:DropDownList ID="ddl_aseguradora" runat="server">
                             <asp:ListItem Text="Seleccionar..." Value=""></asp:ListItem>
-                            <asp:ListItem Text="Colseguros" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Mapfre" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Sura" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
@@ -103,7 +94,7 @@
                 </div>
 
                 <div class="btn-group" style="margin-bottom:15px;">
-                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" />
+                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
                     <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" />
                     <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" />
                 </div>
@@ -116,11 +107,6 @@
                     <div class="form-group">
                         <label for="ddl_tipo_admin">Tipo</label>
                         <asp:DropDownList ID="ddl_tipo_admin" runat="server" Enabled="false">
-                            <asp:ListItem Text="Vida" Value="Vida"></asp:ListItem>
-                            <asp:ListItem Text="Salud" Value="Salud"></asp:ListItem>
-                            <asp:ListItem Text="Automóvil" Value="Automóvil"></asp:ListItem>
-                            <asp:ListItem Text="Hogar" Value="Hogar"></asp:ListItem>
-                            <asp:ListItem Text="Otro" Value="Otro"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
@@ -159,12 +145,6 @@
                     <div class="form-group">
                         <label>Tipo</label>
                         <asp:DropDownList ID="ddl_tipoBusqueda" runat="server">
-                            <asp:ListItem Text="Cualquiera" Value=""></asp:ListItem>
-                            <asp:ListItem Text="Vida" Value="Vida"></asp:ListItem>
-                            <asp:ListItem Text="Salud" Value="Salud"></asp:ListItem>
-                            <asp:ListItem Text="Automóvil" Value="Automóvil"></asp:ListItem>
-                            <asp:ListItem Text="Hogar" Value="Hogar"></asp:ListItem>
-                            <asp:ListItem Text="Otro" Value="Otro"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
@@ -183,9 +163,6 @@
                         <label>Aseguradora:</label>
                         <asp:DropDownList ID="ddl_aseguradoraBusqueda" runat="server">
                             <asp:ListItem Text="Cualquiera" Value=""></asp:ListItem>
-                            <asp:ListItem Text="Colseguros" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Mapfre" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Sura" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
