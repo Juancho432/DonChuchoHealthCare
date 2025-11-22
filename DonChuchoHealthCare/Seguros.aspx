@@ -95,8 +95,8 @@
 
                 <div class="btn-group" style="margin-bottom:15px;">
                     <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
-                    <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" />
-                    <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" />
+                    <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" OnClick="btn_actualizar_Click" />
+                    <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" OnClick="btn_eliminar_Click" />
                 </div>
 
                 <div class="form-grid">
@@ -168,7 +168,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <asp:Button ID="btn_filtrar" runat="server" Text="🔎 Buscar" CssClass="btn" />
+                    <asp:Button ID="btn_filtrar" runat="server" Text="🔎 Buscar" CssClass="btn" OnClick="btn_filtrar_Click" />
                 </div>
 
                 <asp:GridView ID="gv_resultados" runat="server" CssClass="gridview"></asp:GridView>

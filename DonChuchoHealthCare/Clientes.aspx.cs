@@ -33,10 +33,15 @@ namespace DonChuchoHealthCare
             btn_eliminar.Enabled = false;
         }
 
-        protected void Page_Load(object sender, EventArgs e) 
+        private void RecargarDatos()
         {
             gv_clientes.DataSource = objCN_Cliente.ListarClientes();
             gv_clientes.DataBind();
+        }
+
+        protected void Page_Load(object sender, EventArgs e) 
+        {
+            RecargarDatos();
         }
 
         /* ------------------------- GUARDAR ------------------------- */
@@ -56,6 +61,8 @@ namespace DonChuchoHealthCare
             });
 
             lbl_msgRegistro.Text = "✔️ Cliente registrado correctamente.";
+
+            RecargarDatos();
         }
 
         /* ============================================================
@@ -134,6 +141,8 @@ namespace DonChuchoHealthCare
                 lbl_mensaje.Text = "❌ No se encontró ningún cliente con ese ID.";
                 RestaurarCampos();
             }
+
+
         }
 
         /* ============================================================
@@ -156,6 +165,7 @@ namespace DonChuchoHealthCare
             if (objCN_Cliente.ActualizarCliente(data))
             {
                 lbl_mensaje.Text = "✔️ Cliente actualizado correctamente.";
+                RecargarDatos();
             }
             else { 
                 lbl_mensaje.Text = "❌ No se pudo actualizar el cliente.";
@@ -170,6 +180,7 @@ namespace DonChuchoHealthCare
             objCN_Cliente.EliminarCliente(txt_id_admin.Text);
             RestaurarCampos();
             lbl_mensaje.Text = "✔️ Cliente eliminado correctamente.";
+            RecargarDatos();
         }
     }
 }

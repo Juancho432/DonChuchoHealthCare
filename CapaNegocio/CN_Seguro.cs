@@ -24,5 +24,17 @@ namespace CapaNegocio
         {
             return objCD.BuscarSeguro(id);
         }
+
+        public bool ActualizarSeguro(Seguro seguro)
+        {
+            objCD.ActualizarSeguro(seguro);
+            return true;
+        }
+
+        public bool EliminarSeguro(int id)
+        {
+            objCD.EliminarSeguro(id);
+            return true;
+        }
     }
 }
