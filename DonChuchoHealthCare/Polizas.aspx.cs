@@ -67,5 +67,12 @@ namespace DonChuchoHealthCare
             ddl_estado_admin.SelectedValue = ((int)data.estado).ToString();
             txt_motivo_admin.Text = data.motivo_cancelacion;
         }
+
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            objCN_Poliza.CancelarPoliza(txt_buscarPoliza.Text);
+            gv_polizas.DataSource = objCN_Poliza.ListarPolizas();
+            gv_polizas.DataBind();
+        }
     }
 }

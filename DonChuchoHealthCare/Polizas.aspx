@@ -92,7 +92,7 @@
                 <div class="btn-group" style="margin-bottom:15px;">
                     <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
                     <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" />
-                    <asp:Button ID="btn_cancelar" runat="server" Text="❌ Cancelar póliza" CssClass="btn" />
+                    <asp:Button ID="btn_cancelar" runat="server" Text="❌ Cancelar póliza" CssClass="btn" OnClick="btn_cancelar_Click" />
                 </div>
 
                 <div class="form-grid">
