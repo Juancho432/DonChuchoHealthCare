@@ -115,13 +115,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DonChuchoWS.asmx" />
+    <Content Include="WSAseguradora.asmx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DonChuchoWS.asmx.cs">
-      <DependentUpon>DonChuchoWS.asmx</DependentUpon>
+    <Compile Include="WSAseguradora.asmx.cs">
+      <DependentUpon>WSAseguradora.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">
