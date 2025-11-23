@@ -60,15 +60,6 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.TextBox txt_fecha_pago;
 
         /// <summary>
-        /// Control txt_fecha_vencimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fecha_vencimiento;
-
-        /// <summary>
         /// Control txt_monto.
         /// </summary>
         /// <remarks>
