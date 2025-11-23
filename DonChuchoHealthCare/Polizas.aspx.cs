@@ -14,18 +14,21 @@ namespace DonChuchoHealthCare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            gv_polizas.DataSource = objCN_Poliza.ListarPolizas();
-            gv_polizas.DataBind();
+            if (!IsPostBack)
+            {
+                gv_polizas.DataSource = objCN_Poliza.ListarPolizas();
+                gv_polizas.DataBind();
 
-            ddl_cliente.DataSource = objCN_Cliente.ListarClientes();
-            ddl_cliente.DataTextField = "nombre";
-            ddl_cliente.DataValueField = "id_cliente";
-            ddl_cliente.DataBind();
+                ddl_cliente.DataSource = objCN_Cliente.ListarClientes();
+                ddl_cliente.DataTextField = "nombre";
+                ddl_cliente.DataValueField = "id_cliente";
+                ddl_cliente.DataBind();
 
-            ddl_seguro.DataSource = objCN_Seguro.ListarSeguros();
-            ddl_seguro.DataTextField = "nombre";
-            ddl_seguro.DataValueField = "id_seguro";
-            ddl_seguro.DataBind();
+                ddl_seguro.DataSource = objCN_Seguro.ListarSeguros();
+                ddl_seguro.DataTextField = "nombre";
+                ddl_seguro.DataValueField = "id_seguro";
+                ddl_seguro.DataBind();
+            }
         }
 
         protected void btn_limpiar_Click(object sender, EventArgs e)

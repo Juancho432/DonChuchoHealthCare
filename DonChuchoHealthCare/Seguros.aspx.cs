@@ -57,7 +57,8 @@ namespace DonChuchoHealthCare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RecargarDatos();
+            if (!IsPostBack)
+                RecargarDatos();
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)

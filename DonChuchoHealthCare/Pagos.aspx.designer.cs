@@ -15,6 +15,24 @@ namespace DonChuchoHealthCare
     {
 
         /// <summary>
+        /// Control hfAccordion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfAccordion;
+
+        /// <summary>
+        /// Control lbl_msgRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgRegistro;
+
+        /// <summary>
         /// Control ddl_poliza.
         /// </summary>
         /// <remarks>
@@ -105,6 +123,15 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.Button btn_limpiar;
 
         /// <summary>
+        /// Control lbl_msgGestion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgGestion;
+
+        /// <summary>
         /// Control txt_buscarPago.
         /// </summary>
         /// <remarks>
@@ -150,6 +177,15 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.GridView gv_pagos;
 
         /// <summary>
+        /// Control lbl_msgComprobantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgComprobantes;
+
+        /// <summary>
         /// Control txt_comprobantePago.
         /// </summary>
         /// <remarks>
@@ -175,6 +211,15 @@ namespace DonChuchoHealthCare
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_exportarInforme;
+
+        /// <summary>
+        /// Control lbl_msgListado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgListado;
 
         /// <summary>
         /// Control ddl_clienteFiltro.
