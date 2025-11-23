@@ -69,26 +69,7 @@
                         <label for="txt_fecha_inicio">Fecha de inicio</label>
                         <asp:TextBox ID="txt_fecha_inicio" runat="server" TextMode="Date"></asp:TextBox>
                     </div>
-
-                    <div class="form-group">
-                        <label for="txt_fecha_fin">Fecha de fin</label>
-                        <asp:TextBox ID="txt_fecha_fin" runat="server" TextMode="Date"></asp:TextBox>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ddl_estado">Estado</label>
-                        <asp:DropDownList ID="ddl_estado" runat="server">
-                            <asp:ListItem Text="Vigente" Value="Vigente"></asp:ListItem>
-                            <asp:ListItem Text="Vencida" Value="Vencida"></asp:ListItem>
-                            <asp:ListItem Text="Renovación" Value="Renovacion"></asp:ListItem>
-                            <asp:ListItem Text="Cancelada" Value="Cancelada"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txt_motivo_cancelacion">Motivo de cancelación</label>
-                        <asp:TextBox ID="txt_motivo_cancelacion" runat="server" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                    </div>
+            
 
                 </div>
 
@@ -165,7 +146,6 @@
 
                 <div class="btn-group">
                     <asp:Button ID="btn_generarCertificado" runat="server" Text="📄 Generar certificado" CssClass="btn" />
-                    <asp:Button ID="btn_exportarPDF" runat="server" Text="⬇️ Exportar PDF" CssClass="btn" />
                 </div>
 
             </div>

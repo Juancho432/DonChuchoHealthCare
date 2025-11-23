@@ -150,15 +150,6 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.Button btn_buscar;
 
         /// <summary>
-        /// Control btn_actualizar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_actualizar;
-
-        /// <summary>
         /// Control btn_eliminar.
         /// </summary>
         /// <remarks>
@@ -202,15 +193,6 @@ namespace DonChuchoHealthCare
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_generarComprobante;
-
-        /// <summary>
-        /// Control btn_exportarInforme.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_exportarInforme;
 
         /// <summary>
         /// Control lbl_msgListado.

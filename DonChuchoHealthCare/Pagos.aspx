@@ -117,7 +117,6 @@
 
                 <div class="btn-group">
                     <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" />
-                    <asp:Button ID="btn_actualizar" runat="server" Text="✏️ Actualizar" CssClass="btn" />
                     <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" />
                 </div>
 
@@ -131,7 +130,7 @@
 
         <!-- ================= COMPROBANTES ================= -->
         <div class="accordion-section">
-            <div class="accordion-header">Comprobantes e informes</div>
+            <div class="accordion-header">Comprobantes</div>
             <div class="accordion-content">
 
                 <asp:Label ID="lbl_msgComprobantes" runat="server" CssClass="msg"></asp:Label>
@@ -143,7 +142,6 @@
 
                 <div class="btn-group">
                     <asp:Button ID="btn_generarComprobante" runat="server" Text="📄 Generar comprobante" CssClass="btn" />
-                    <asp:Button ID="btn_exportarInforme" runat="server" Text="📊 Exportar informe" CssClass="btn" />
                 </div>
 
             </div>

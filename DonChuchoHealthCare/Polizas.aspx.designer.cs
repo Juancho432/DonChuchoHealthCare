@@ -69,33 +69,6 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.TextBox txt_fecha_inicio;
 
         /// <summary>
-        /// Control txt_fecha_fin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fecha_fin;
-
-        /// <summary>
-        /// Control ddl_estado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_estado;
-
-        /// <summary>
-        /// Control txt_motivo_cancelacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_motivo_cancelacion;
-
-        /// <summary>
         /// Control btn_guardar.
         /// </summary>
         /// <remarks>
@@ -211,15 +184,6 @@ namespace DonChuchoHealthCare
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_generarCertificado;
-
-        /// <summary>
-        /// Control btn_exportarPDF.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_exportarPDF;
 
         /// <summary>
         /// Control lbl_msgListado.

@@ -49,7 +49,8 @@ namespace DonChuchoHealthCare
             }
             else
             {
-                // Las contraseñas no coinciden
+                lblMensaje.CssClass = "msg msg-error";
+                lblMensaje.Text = "⚠️ Las contraseñas no coinciden.";
             }
         }
     }

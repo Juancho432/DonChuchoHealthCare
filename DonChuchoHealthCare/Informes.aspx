@@ -54,24 +54,10 @@
                         <asp:DropDownList ID="ddl_tipoSeguro" runat="server"></asp:DropDownList>
                     </div>
 
-                    <div class="form-group">
-                        <label for="txt_fechaInicio">Fecha inicio</label>
-                        <asp:TextBox ID="txt_fechaInicio" runat="server" TextMode="Date"></asp:TextBox>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txt_fechaFin">Fecha fin</label>
-                        <asp:TextBox ID="txt_fechaFin" runat="server" TextMode="Date"></asp:TextBox>
-                    </div>
 
                     <div class="form-group">
                         <label for="ddl_cliente">Cliente</label>
                         <asp:DropDownList ID="ddl_cliente" runat="server"></asp:DropDownList>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ddl_region">Región</label>
-                        <asp:DropDownList ID="ddl_region" runat="server"></asp:DropDownList>
                     </div>
 
                 </div>
