@@ -41,8 +41,6 @@ namespace CapaDatos
             };
         }
 
-
-
         //Verificar si existe una Poliza
         public bool ExistePoliza(string numeroPoliza)
         {
@@ -56,7 +54,6 @@ namespace CapaDatos
                 return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
             }
         }
-
 
         // INSERTAR
         public void InsertarPoliza(Poliza p)

@@ -14,18 +14,21 @@ namespace DonChuchoHealthCare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            gv_polizas.DataSource = objCN_Poliza.ListarPolizas();
-            gv_polizas.DataBind();
+            if (!IsPostBack)
+            {
+                gv_polizas.DataSource = objCN_Poliza.ListarPolizas();
+                gv_polizas.DataBind();
 
-            ddl_cliente.DataSource = objCN_Cliente.ListarClientes();
-            ddl_cliente.DataTextField = "nombre";
-            ddl_cliente.DataValueField = "id_cliente";
-            ddl_cliente.DataBind();
+                ddl_cliente.DataSource = objCN_Cliente.ListarClientes();
+                ddl_cliente.DataTextField = "nombre";
+                ddl_cliente.DataValueField = "id_cliente";
+                ddl_cliente.DataBind();
 
-            ddl_seguro.DataSource = objCN_Seguro.ListarSeguros();
-            ddl_seguro.DataTextField = "nombre";
-            ddl_seguro.DataValueField = "id_seguro";
-            ddl_seguro.DataBind();
+                ddl_seguro.DataSource = objCN_Seguro.ListarSeguros();
+                ddl_seguro.DataTextField = "nombre";
+                ddl_seguro.DataValueField = "id_seguro";
+                ddl_seguro.DataBind();
+            }
         }
 
         protected void btn_limpiar_Click(object sender, EventArgs e)
@@ -34,9 +37,6 @@ namespace DonChuchoHealthCare
             ddl_cliente.SelectedIndex = 0;
             ddl_seguro.SelectedIndex = 0;
             txt_fecha_inicio.Text = "";
-            txt_fecha_fin.Text = "";
-            ddl_estado.SelectedIndex = 0;
-            txt_motivo_cancelacion.Text = "";
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -47,7 +47,6 @@ namespace DonChuchoHealthCare
                 id_cliente = ddl_cliente.SelectedValue,
                 id_seguro = Convert.ToInt32(ddl_seguro.SelectedValue),
                 fecha_inicio = Convert.ToDateTime(txt_fecha_inicio.Text),
-                fecha_fin = Convert.ToDateTime(txt_fecha_fin.Text),
                 estado = EstadoPoliza.Vigente,
                 fecha_creacion = DateTime.Now
             };
@@ -66,6 +65,13 @@ namespace DonChuchoHealthCare
             txt_numero_admin.Text = data.numero_poliza;
             ddl_estado_admin.SelectedValue = ((int)data.estado).ToString();
             txt_motivo_admin.Text = data.motivo_cancelacion;
+        }
+
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            objCN_Poliza.CancelarPoliza(txt_buscarPoliza.Text);
+            gv_polizas.DataSource = objCN_Poliza.ListarPolizas();
+            gv_polizas.DataBind();
         }
     }
 }

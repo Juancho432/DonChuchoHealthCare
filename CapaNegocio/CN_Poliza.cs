@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Runtime.InteropServices;
 using CapaDatos;
 using Entidades;
 
@@ -14,7 +13,12 @@ namespace CapaNegocio
         {
             objCD.InsertarPoliza(data);
         }
-        public void CancelarPoliza (string id) { }
+        
+        public void CancelarPoliza (string id) 
+        { 
+            objCD.EliminarPoliza(id);
+        } 
+
         public void ActualizarPoliza(Poliza data) { }
         public Poliza BuscarPoliza (string id) 
         {
@@ -42,8 +46,7 @@ namespace CapaNegocio
 
         public DataTable ListarPolizas (string id) 
         {
-            objCD.ListarPolizasPorCliente(id);
-            return new DataTable();
+            return objCD.ListarPolizasPorCliente(id);
         }
     }
 }

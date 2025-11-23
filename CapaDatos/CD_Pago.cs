@@ -1,5 +1,4 @@
-﻿
-using System.Data;
+﻿using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using Entidades;
@@ -10,7 +9,9 @@ namespace CapaDatos
     {
         private readonly string cadena = ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
 
-        //INSERTAR
+        // ===============================
+        // INSERTAR
+        // ===============================
         public void Insertar(Pago pago)
         {
             using (MySqlConnection con = new MySqlConnection(cadena))
@@ -34,7 +35,9 @@ namespace CapaDatos
             }
         }
 
+        // ===============================
         // ACTUALIZAR
+        // ===============================
         public void Actualizar(Pago pago)
         {
             using (MySqlConnection con = new MySqlConnection(cadena))
@@ -44,7 +47,6 @@ namespace CapaDatos
                             id_cliente=@id_cliente,
                             id_usuario=@id_usuario,
                             fecha_pago=@fecha_pago,
-                            fecha_vencimiento=@fecha_vencimiento,
                             monto=@monto,
                             forma_pago=@forma_pago,
                             numero_comprobante=@numero_comprobante,
@@ -67,7 +69,9 @@ namespace CapaDatos
             }
         }
 
+        // ===============================
         // ELIMINAR
+        // ===============================
         public void Eliminar(int id_pago)
         {
             using (MySqlConnection con = new MySqlConnection(cadena))
@@ -80,7 +84,9 @@ namespace CapaDatos
             }
         }
 
-        // LISTAR TODOS
+        // ===============================
+        // LISTAR TODO
+        // ===============================
         public DataTable Listar()
         {
             DataTable dt = new DataTable();
@@ -93,7 +99,6 @@ namespace CapaDatos
                             c.nombre AS cliente,
                             p.monto,
                             p.fecha_pago,
-                            p.fecha_vencimiento,
                             p.forma_pago,
                             p.estado_pago,
                             p.numero_comprobante
@@ -108,7 +113,9 @@ namespace CapaDatos
             return dt;
         }
 
-        // LISTAR POR ESTADO DE PAGO
+        // ===============================
+        // LISTAR POR ESTADO
+        // ===============================
         public DataTable ListarPorEstado(string estado_pago)
         {
             DataTable dt = new DataTable();
@@ -120,14 +127,14 @@ namespace CapaDatos
                             c.nombre AS cliente,
                             p.monto,
                             p.fecha_pago,
-                            p.fecha_vencimiento,
                             p.forma_pago,
-                            p.estado_pago
+                            p.estado_pago,
+                            p.numero_comprobante
                           FROM pagos p
                           INNER JOIN clientes c ON p.id_cliente = c.id_cliente
                           INNER JOIN polizas po ON p.id_poliza = po.id_poliza
                           WHERE p.estado_pago = @estado_pago
-                          ORDER BY p.fecha_vencimiento ASC;";
+                          ORDER BY p.fecha_pago ASC;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@estado_pago", estado_pago);
@@ -138,16 +145,18 @@ namespace CapaDatos
             return dt;
         }
 
-        // ACTUALIZAR ESTADO AUTOMÁTICAMENTE SEGÚN LA FECHA
+        // ===============================
+        // ACTUALIZAR ESTADOS AUTOMÁTICAMENTE
+        // ===============================
         public void ActualizarEstadoPagos()
         {
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
                 string sql = @"
-                UPDATE pagos
-                SET estado_pago = 'Atrasado'
-                WHERE fecha_vencimiento < CURDATE()
-                AND estado_pago = 'Pendiente';";
+                    UPDATE pagos
+                    SET estado_pago = 'Atrasado'
+                    WHERE estado_pago = 'Pendiente'
+                    AND fecha_pago < CURDATE();";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 con.Open();
@@ -155,7 +164,9 @@ namespace CapaDatos
             }
         }
 
-        // OBTENER PAGOS PENDIENTES O ATRASADOS DE UN CLIENTE
+        // ===============================
+        // HISTORIAL CREDITICIO CLIENTE
+        // ===============================
         public DataTable ObtenerHistorialCrediticioCliente(string id_cliente)
         {
             DataTable dt = new DataTable();
@@ -166,15 +177,15 @@ namespace CapaDatos
                             po.numero_poliza,
                             p.monto,
                             p.fecha_pago,
-                            p.fecha_vencimiento,
                             p.estado_pago,
-                            s.nombre AS tipo_seguro
+                            s.nombre AS tipo_seguro,
+                            p.numero_comprobante
                           FROM pagos p
                           INNER JOIN polizas po ON p.id_poliza = po.id_poliza
                           INNER JOIN seguros s ON po.id_seguro = s.id_seguro
                           WHERE p.id_cliente = @id_cliente
                           AND (p.estado_pago = 'Pendiente' OR p.estado_pago = 'Atrasado')
-                          ORDER BY p.fecha_vencimiento ASC;";
+                          ORDER BY p.fecha_pago ASC;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id_cliente", id_cliente);

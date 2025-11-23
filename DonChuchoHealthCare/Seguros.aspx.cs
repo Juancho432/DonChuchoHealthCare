@@ -26,6 +26,10 @@ namespace DonChuchoHealthCare
             ddl_aseguradoraBusqueda.DataValueField = "id_aseguradora";
             ddl_aseguradoraBusqueda.DataBind();
 
+            string tipoSeleccionado = ddl_tipoBusqueda.SelectedValue;
+            string tipoAdminSeleccionado = ddl_tipo_admin.SelectedValue;
+            string tipoSeleccionadoBusqueda = ddl_tipoBusqueda.SelectedValue;
+
             ddl_tipo.Items.Clear();
             ddl_tipo_admin.Items.Clear();
             ddl_tipoBusqueda.Items.Clear();
@@ -43,13 +47,18 @@ namespace DonChuchoHealthCare
                 );
             }
 
+            ddl_tipoBusqueda.SelectedValue = tipoSeleccionado;
+            ddl_tipo_admin.SelectedValue = tipoAdminSeleccionado;
+            ddl_tipoBusqueda.SelectedValue = tipoSeleccionadoBusqueda;
+
             gv_seguros.DataSource = objCN_Seguro.ListarSeguros();
             gv_seguros.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RecargarDatos();
+            if (!IsPostBack)
+                RecargarDatos();
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -108,6 +117,61 @@ namespace DonChuchoHealthCare
             txt_beneficios_admin.Text = data.beneficios;
             txt_exclusiones_admin.Text = data.exclusiones;
             txt_condiciones_admin.Text = data.condiciones;
+        }
+
+        protected void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            Seguro data = new Seguro
+            {
+                id_seguro = int.Parse(txt_buscarSeguro.Text),
+                nombre = txt_nombre_admin.Text,
+                tipo_seguro = (Tipo_Seguro)int.Parse(ddl_tipo_admin.SelectedValue),
+                cobertura = txt_cobertura_admin.Text,
+                costo = decimal.Parse(txt_costo_admin.Text),
+                duracion_meses = int.Parse(txt_duracion_admin.Text),
+                id_aseguradora = int.Parse(ddl_aseguradoraBusqueda.SelectedValue),
+                beneficios = txt_beneficios_admin.Text,
+                exclusiones = txt_exclusiones_admin.Text,
+                condiciones = txt_condiciones_admin.Text
+            };
+            objCN_Seguro.ActualizarSeguro(data);
+            RecargarDatos();
+        }
+
+        protected void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            objCN_Seguro.EliminarSeguro(int.Parse(txt_buscarSeguro.Text));
+            RecargarDatos();
+        }
+
+        protected void btn_filtrar_Click(object sender, EventArgs e)
+        {
+            gv_resultados.DataSource = null;
+            gv_resultados.DataBind();
+
+            DataTable data = objCN_Seguro.ListarSeguros();
+            var filtrado = data.AsEnumerable()
+                .Where(row =>
+                    row.Field<string>("tipo").Contains(ddl_tipoBusqueda.SelectedItem.Text) &&
+                    row.Field<string>("cobertura").Contains(txt_busquedaCobertura.Text) &&
+                    row.Field<decimal>("costo") <= (string.IsNullOrEmpty(txt_costoMax.Text) 
+                                                    ? decimal.MaxValue 
+                                                    : decimal.Parse(txt_costoMax.Text)) &&
+                    row.Field<int>("duracion_meses") >= (string.IsNullOrEmpty(txt_duracionMin.Text)
+                                                        ? 0 : int.Parse(txt_duracionMin.Text)) &&
+                    row.Field<int>("id_aseguradora") == int.Parse(ddl_aseguradoraBusqueda.Text)
+                    );
+
+            try
+            {
+                gv_resultados.DataSource = filtrado.CopyToDataTable();
+                gv_resultados.DataBind();
+            }
+            catch
+            {
+                // No hay resultados al filtro
+            }
+
         }
     }
 }

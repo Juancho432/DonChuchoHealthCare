@@ -154,7 +154,7 @@ namespace CapaDatos
             var dt = new DataTable();
             using (var con = new MySqlConnection(cadena))
             {
-                sql = @"SELECT id_seguro, nombre, tipo, cobertura, costo, duracion_meses, estado
+                sql = @"SELECT id_seguro, nombre, tipo, cobertura, costo, duracion_meses, estado, id_aseguradora
                         FROM seguros ORDER BY nombre ASC";
 
                 new MySqlDataAdapter(sql, con).Fill(dt);

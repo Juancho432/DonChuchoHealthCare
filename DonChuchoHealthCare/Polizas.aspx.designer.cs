@@ -15,6 +15,24 @@ namespace DonChuchoHealthCare
     {
 
         /// <summary>
+        /// Control hfAccordion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfAccordion;
+
+        /// <summary>
+        /// Control lbl_msgRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgRegistro;
+
+        /// <summary>
         /// Control txt_numero_poliza.
         /// </summary>
         /// <remarks>
@@ -51,33 +69,6 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.TextBox txt_fecha_inicio;
 
         /// <summary>
-        /// Control txt_fecha_fin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fecha_fin;
-
-        /// <summary>
-        /// Control ddl_estado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_estado;
-
-        /// <summary>
-        /// Control txt_motivo_cancelacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_motivo_cancelacion;
-
-        /// <summary>
         /// Control btn_guardar.
         /// </summary>
         /// <remarks>
@@ -94,6 +85,15 @@ namespace DonChuchoHealthCare
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_limpiar;
+
+        /// <summary>
+        /// Control lbl_msgAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgAdmin;
 
         /// <summary>
         /// Control txt_buscarPoliza.
@@ -159,6 +159,15 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.TextBox txt_motivo_admin;
 
         /// <summary>
+        /// Control lbl_msgCertificados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msgCertificados;
+
+        /// <summary>
         /// Control txt_certificadoPoliza.
         /// </summary>
         /// <remarks>
@@ -177,13 +186,13 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.Button btn_generarCertificado;
 
         /// <summary>
-        /// Control btn_exportarPDF.
+        /// Control lbl_msgListado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_exportarPDF;
+        protected global::System.Web.UI.WebControls.Label lbl_msgListado;
 
         /// <summary>
         /// Control gv_polizas.
