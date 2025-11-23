@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace DonChuchoHealthCare
 {
-    public partial class Reportes : Page
+    public partial class Informes : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

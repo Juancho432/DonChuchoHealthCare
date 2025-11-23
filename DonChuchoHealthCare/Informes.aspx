@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Módulo de Reportes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="DonChuchoHealthCare.Reportes" %>
+﻿<%@ Page Title="Módulo de Reportes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Informes.aspx.cs" Inherits="DonChuchoHealthCare.Informes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

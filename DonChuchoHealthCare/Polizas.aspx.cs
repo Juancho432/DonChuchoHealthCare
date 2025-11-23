@@ -37,7 +37,6 @@ namespace DonChuchoHealthCare
             ddl_cliente.SelectedIndex = 0;
             ddl_seguro.SelectedIndex = 0;
             txt_fecha_inicio.Text = "";
-            txt_fecha_fin.Text = "";
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -48,7 +47,6 @@ namespace DonChuchoHealthCare
                 id_cliente = ddl_cliente.SelectedValue,
                 id_seguro = Convert.ToInt32(ddl_seguro.SelectedValue),
                 fecha_inicio = Convert.ToDateTime(txt_fecha_inicio.Text),
-                fecha_fin = Convert.ToDateTime(txt_fecha_fin.Text),
                 estado = EstadoPoliza.Vigente,
                 fecha_creacion = DateTime.Now
             };
