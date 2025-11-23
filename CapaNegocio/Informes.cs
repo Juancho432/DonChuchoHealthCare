@@ -13,7 +13,10 @@ namespace CapaNegocio
             _data = data;
         }
     
-        
+        public void Generar()
+        {
+
+        }
     }
 
 }

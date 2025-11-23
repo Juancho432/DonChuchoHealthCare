@@ -28,18 +28,12 @@
                     <div class="form-group">
                         <label for="ddl_poliza">Póliza asociada</label>
                         <asp:DropDownList ID="ddl_poliza" runat="server">
-                            <asp:ListItem Text="Seleccionar..." Value=""></asp:ListItem>
-                            <asp:ListItem Text="POL-2025-001" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="POL-2025-002" Value="2"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
                     <div class="form-group">
                         <label for="ddl_cliente">Cliente</label>
                         <asp:DropDownList ID="ddl_cliente" runat="server">
-                            <asp:ListItem Text="Seleccionar..." Value=""></asp:ListItem>
-                            <asp:ListItem Text="101 - Carlos Pérez" Value="101"></asp:ListItem>
-                            <asp:ListItem Text="102 - Ana Gómez" Value="102"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
@@ -84,7 +78,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" />
+                    <asp:Button ID="btn_guardar" runat="server" Text="💾 Guardar" CssClass="btn" OnClick="btn_guardar_Click" />
                     <asp:Button ID="btn_limpiar" runat="server" Text="🧹 Limpiar" CssClass="btn" />
                 </div>
             </div>
