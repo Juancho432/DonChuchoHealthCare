@@ -16,8 +16,8 @@ namespace CapaDatos
             using (MySqlConnection con = new MySqlConnection(cadena))
             {
                 string sql = @"INSERT INTO pagos 
-                          (id_poliza, id_cliente, id_usuario, fecha_pago, fecha_vencimiento, monto, forma_pago, numero_comprobante, estado_pago)
-                          VALUES (@id_poliza, @id_cliente, @id_usuario, @fecha_pago, @fecha_vencimiento, @monto, @forma_pago, @numero_comprobante, @estado_pago)";
+                          (id_poliza, id_cliente, id_usuario, fecha_pago, monto, forma_pago, numero_comprobante, estado_pago)
+                          VALUES (@id_poliza, @id_cliente, @id_usuario, @fecha_pago, @monto, @forma_pago, @numero_comprobante, @estado_pago)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@id_poliza", pago.id_poliza);
