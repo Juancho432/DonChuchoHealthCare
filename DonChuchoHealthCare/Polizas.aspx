@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/Polizas.css" rel="stylesheet" />
 
-    <!-- Campo oculto para recordar acordeón abierto -->
-    <asp:HiddenField ID="hfAccordion" runat="server" />
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -38,6 +36,10 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Campo oculto para recordar acordeón abierto -->
+    <asp:HiddenField ID="hfAccordion" runat="server" />
+
     <div class="polizas-container">
 
         <!-- ======================= REGISTRO ======================= -->
@@ -105,8 +107,23 @@
                 <div class="form-grid">
 
                     <div class="form-group">
-                        <label for="txt_numero_admin">Número de póliza</label>
-                        <asp:TextBox ID="txt_numero_admin" runat="server" ReadOnly="true"></asp:TextBox>
+                        <label for="txt_cliente_admin">Cliente</label>
+                        <asp:TextBox ID="txt_cliente_admin" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt_seguro_admin">Seguro</label>
+                        <asp:TextBox ID="txt_seguro_admin" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt_inicio_admin">Fecha inicio</label>
+                        <asp:TextBox ID="txt_inicio_admin" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt_fin_admin">Fecha fin</label>
+                        <asp:TextBox ID="txt_fin_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="form-group">

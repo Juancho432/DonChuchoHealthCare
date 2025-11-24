@@ -204,6 +204,15 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.TextBox txt_cobertura_admin;
 
         /// <summary>
+        /// Control ddl_aseguradora_admin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_aseguradora_admin;
+
+        /// <summary>
         /// Control txt_costo_admin.
         /// </summary>
         /// <remarks>

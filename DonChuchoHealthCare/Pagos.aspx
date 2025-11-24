@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/Pagos.css" rel="stylesheet" />
 
-    <!-- Para mantener qué acordeón queda abierto -->
-    <asp:HiddenField ID="hfAccordion" runat="server" />
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -39,6 +37,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <!-- Para mantener qué acordeón queda abierto -->
+    <asp:HiddenField ID="hfAccordion" runat="server" />
+
     <div class="pagos-container">
 
         <!-- ================= REGISTRO DE PAGOS ================= -->
@@ -65,10 +66,6 @@
                         <asp:TextBox ID="txt_fecha_pago" runat="server" TextMode="Date"></asp:TextBox>
                     </div>
 
-                    <div class="form-group">
-                        <label for="txt_fecha_vencimiento">Fecha de vencimiento</label>
-                        <asp:TextBox ID="txt_fecha_vencimiento" runat="server" TextMode="Date"></asp:TextBox>
-                    </div>
 
                     <div class="form-group">
                         <label for="txt_monto">Monto (COP)</label>
@@ -116,7 +113,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" />
+                    <asp:Button ID="btn_buscar" runat="server" Text="🔍 Buscar" CssClass="btn" OnClick="btn_buscar_Click" />
                     <asp:Button ID="btn_eliminar" runat="server" Text="🗑️ Eliminar" CssClass="btn" />
                 </div>
 

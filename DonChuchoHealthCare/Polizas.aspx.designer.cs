@@ -132,13 +132,40 @@ namespace DonChuchoHealthCare
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
 
         /// <summary>
-        /// Control txt_numero_admin.
+        /// Control txt_cliente_admin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_numero_admin;
+        protected global::System.Web.UI.WebControls.TextBox txt_cliente_admin;
+
+        /// <summary>
+        /// Control txt_seguro_admin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_seguro_admin;
+
+        /// <summary>
+        /// Control txt_inicio_admin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_inicio_admin;
+
+        /// <summary>
+        /// Control txt_fin_admin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_fin_admin;
 
         /// <summary>
         /// Control ddl_estado_admin.

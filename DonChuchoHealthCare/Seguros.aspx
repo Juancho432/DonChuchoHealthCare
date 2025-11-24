@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/Seguros.css" rel="stylesheet" />
 
-    <!-- Campo oculto para recordar el acordeón abierto -->
-    <asp:HiddenField ID="hfAccordion" runat="server" />
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -39,6 +37,10 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Campo oculto para recordar el acordeón abierto -->
+    <asp:HiddenField ID="hfAccordion" runat="server" />
+
     <div class="seguros-container">
 
         <!-- ======================= REGISTRO DE SEGURO ======================= -->
@@ -142,6 +144,12 @@
                         <label for="txt_cobertura_admin">Cobertura</label>
                         <asp:TextBox ID="txt_cobertura_admin" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
+
+                    <div class="form-group">
+                        <label for="ddl_aseguradora_admin">Aseguradora</label>
+                        <asp:DropDownList ID="ddl_aseguradora_admin" runat="server" Enabled="false"></asp:DropDownList>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="txt_costo_admin">Costo</label>

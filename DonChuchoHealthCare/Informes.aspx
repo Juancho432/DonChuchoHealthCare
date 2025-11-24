@@ -4,9 +4,6 @@
 
     <link href="css/Informes.css" rel="stylesheet" />
 
-    <!-- Campo oculto para recordar qué acordeón está abierto -->
-    <asp:HiddenField ID="hfAccordion" runat="server" />
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -36,6 +33,9 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Campo oculto para recordar qué acordeón está abierto -->
+    <asp:HiddenField ID="hfAccordion" runat="server" />
 
     <div class="reportes-container">
 

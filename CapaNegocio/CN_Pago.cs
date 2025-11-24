@@ -16,7 +16,10 @@ namespace CapaNegocio
 
         public void EliminarPago (string id) { }
         public void ActualizarPago (Pago data) { }
-        public void BuscarPago (string id) { }
+        public DataTable BuscarPagoPorComprobante(string numero_comprobante)
+        {
+            return objCD.BuscarPorComprobante(numero_comprobante);
+        }
         public DataTable ListarPagos () 
         {
             return objCD.Listar();

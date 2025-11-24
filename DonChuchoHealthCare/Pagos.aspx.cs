@@ -2,6 +2,7 @@
 using CapaNegocio;
 using Entidades;
 using System;
+using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -60,7 +61,6 @@ namespace DonChuchoHealthCare
             ddl_poliza.SelectedIndex = 0;
             ddl_cliente.SelectedIndex = 0;
             txt_fecha_pago.Text = "";
-            txt_fecha_vencimiento.Text = "";
             txt_monto.Text = "";
             ddl_forma_pago.SelectedIndex = 0;
             txt_numero_comprobante.Text = "";
@@ -73,6 +73,7 @@ namespace DonChuchoHealthCare
             {
                 id_poliza = int.Parse(ddl_poliza.SelectedValue),
                 id_cliente = ddl_cliente.SelectedValue,
+                id_usuario = 1, // ID estático para pruebas
                 fecha_pago = DateTime.Parse(txt_fecha_pago.Text),
                 monto = decimal.Parse(txt_monto.Text),
                 forma_pago = (Forma_Pago)int.Parse(ddl_forma_pago.SelectedValue),
@@ -83,5 +84,34 @@ namespace DonChuchoHealthCare
             objCN_Pago.CrearPago(data);
             RecargarDatos();
         }
+
+        protected void btn_buscar_Click(object sender, EventArgs e)
+        {
+            string comprobante = txt_buscarPago.Text.Trim();
+
+            if (string.IsNullOrEmpty(comprobante))
+            {
+                lbl_msgGestion.Text = "Ingrese un número de comprobante.";
+                gv_pagos.DataSource = null;
+                gv_pagos.DataBind();
+                return;
+            }
+
+            DataTable dt = objCN_Pago.BuscarPagoPorComprobante(comprobante);
+
+            if (dt.Rows.Count > 0)
+            {
+                gv_pagos.DataSource = dt;
+                gv_pagos.DataBind();
+                lbl_msgGestion.Text = "";
+            }
+            else
+            {
+                gv_pagos.DataSource = null;
+                gv_pagos.DataBind();
+                lbl_msgGestion.Text = "No se encontró ningún pago con ese comprobante.";
+            }
+        }
+
     }
 }

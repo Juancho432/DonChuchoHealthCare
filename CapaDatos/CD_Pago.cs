@@ -195,5 +195,40 @@ namespace CapaDatos
             }
             return dt;
         }
+
+        public DataTable BuscarPorComprobante(string numero_comprobante)
+        {
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection con = new MySqlConnection(cadena))
+            {
+                string sql = @"SELECT 
+                        p.id_pago,
+                        p.id_poliza,
+                        po.numero_poliza,
+                        c.nombre AS cliente,
+                        p.monto,
+                        p.fecha_pago,
+                        p.forma_pago,
+                        p.estado_pago,
+                        p.numero_comprobante
+                       FROM pagos p
+                       INNER JOIN clientes c ON p.id_cliente = c.id_cliente
+                       INNER JOIN polizas po ON p.id_poliza = po.id_poliza
+                       WHERE p.numero_comprobante = @numero_comprobante";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@numero_comprobante", numero_comprobante);
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+
+
     }
 }
+
+

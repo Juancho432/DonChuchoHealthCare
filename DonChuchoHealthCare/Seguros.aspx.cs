@@ -15,20 +15,45 @@ namespace DonChuchoHealthCare
 
         private void RecargarDatos()
         {
+            string tipoSeleccionado = ddl_tipo.SelectedValue;
+            string tipoAdminSeleccionado = ddl_tipo_admin.SelectedValue;
+            string tipoSeleccionadoBusqueda = ddl_tipoBusqueda.SelectedValue;
+
+            string aseguradoraSeleccionada = ddl_aseguradora.SelectedValue;
+            string aseguradoraAdminSeleccionada = ddl_aseguradora_admin.SelectedValue;
+            string aseguradoraBusquedaSeleccionada = ddl_aseguradoraBusqueda.SelectedValue;
+
+
             DataTable aseguradoras = objCN_Aseguradora.ListarAseguradoras();
+
+            // Para Registro
             ddl_aseguradora.DataSource = aseguradoras;
             ddl_aseguradora.DataTextField = "nombre";
             ddl_aseguradora.DataValueField = "id_aseguradora";
             ddl_aseguradora.DataBind();
 
+            // Para Administración
+            ddl_aseguradora_admin.DataSource = aseguradoras;
+            ddl_aseguradora_admin.DataTextField = "nombre";
+            ddl_aseguradora_admin.DataValueField = "id_aseguradora";
+            ddl_aseguradora_admin.DataBind();
+
+            // Para Búsqueda Avanzada
             ddl_aseguradoraBusqueda.DataSource = aseguradoras;
             ddl_aseguradoraBusqueda.DataTextField = "nombre";
             ddl_aseguradoraBusqueda.DataValueField = "id_aseguradora";
             ddl_aseguradoraBusqueda.DataBind();
 
-            string tipoSeleccionado = ddl_tipoBusqueda.SelectedValue;
-            string tipoAdminSeleccionado = ddl_tipo_admin.SelectedValue;
-            string tipoSeleccionadoBusqueda = ddl_tipoBusqueda.SelectedValue;
+            // Restaurar selección previa
+            if (!string.IsNullOrEmpty(aseguradoraSeleccionada))
+                ddl_aseguradora.SelectedValue = aseguradoraSeleccionada;
+
+            if (!string.IsNullOrEmpty(aseguradoraAdminSeleccionada))
+                ddl_aseguradora_admin.SelectedValue = aseguradoraAdminSeleccionada;
+
+            if (!string.IsNullOrEmpty(aseguradoraBusquedaSeleccionada))
+                ddl_aseguradoraBusqueda.SelectedValue = aseguradoraBusquedaSeleccionada;
+
 
             ddl_tipo.Items.Clear();
             ddl_tipo_admin.Items.Clear();
@@ -36,20 +61,21 @@ namespace DonChuchoHealthCare
 
             foreach (Tipo_Seguro tipo in Enum.GetValues(typeof(Tipo_Seguro)))
             {
-                ddl_tipo.Items.Add(
-                    new ListItem(tipo.ToString(), ((int)tipo).ToString())
-                );
-                ddl_tipo_admin.Items.Add(
-                    new ListItem(tipo.ToString(), ((int)tipo).ToString())
-                );
-                ddl_tipoBusqueda.Items.Add(
-                    new ListItem(tipo.ToString(), ((int)tipo).ToString())
-                );
+                ddl_tipo.Items.Add(new ListItem(tipo.ToString(), ((int)tipo).ToString()));
+                ddl_tipo_admin.Items.Add(new ListItem(tipo.ToString(), ((int)tipo).ToString()));
+                ddl_tipoBusqueda.Items.Add(new ListItem(tipo.ToString(), ((int)tipo).ToString()));
             }
 
-            ddl_tipoBusqueda.SelectedValue = tipoSeleccionado;
-            ddl_tipo_admin.SelectedValue = tipoAdminSeleccionado;
-            ddl_tipoBusqueda.SelectedValue = tipoSeleccionadoBusqueda;
+            // Restaurar selección previa
+            if (!string.IsNullOrEmpty(tipoSeleccionado))
+                ddl_tipo.SelectedValue = tipoSeleccionado;
+
+            if (!string.IsNullOrEmpty(tipoAdminSeleccionado))
+                ddl_tipo_admin.SelectedValue = tipoAdminSeleccionado;
+
+            if (!string.IsNullOrEmpty(tipoSeleccionadoBusqueda))
+                ddl_tipoBusqueda.SelectedValue = tipoSeleccionadoBusqueda;
+
 
             gv_seguros.DataSource = objCN_Seguro.ListarSeguros();
             gv_seguros.DataBind();
@@ -92,15 +118,25 @@ namespace DonChuchoHealthCare
             txt_beneficios.Text = "";
             txt_exclusiones.Text = "";
             txt_condiciones.Text = "";
+
+            lbl_msgRegistro.Text = "";
         }
 
         protected void btn_buscar_Click(object sender, EventArgs e)
         {
             Seguro data = objCN_Seguro.BuscarSeguro(int.Parse(txt_buscarSeguro.Text));
 
+            if (data.id_seguro == 0)
+            {
+                lbl_msgAdmin.Text = "No se encontró el seguro.";
+                lbl_msgAdmin.CssClass = "msg msg-error";
+                return;
+            }
+
+            // habilitar edición
             txt_nombre_admin.ReadOnly = false;
-            ddl_aseguradoraBusqueda.Enabled = true;
             ddl_tipo_admin.Enabled = true;
+            ddl_aseguradora_admin.Enabled = true;
             txt_cobertura_admin.ReadOnly = false;
             txt_costo_admin.ReadOnly = false;
             txt_duracion_admin.ReadOnly = false;
@@ -108,9 +144,10 @@ namespace DonChuchoHealthCare
             txt_exclusiones_admin.ReadOnly = false;
             txt_condiciones_admin.ReadOnly = false;
 
+            // llenar datos
             txt_nombre_admin.Text = data.nombre;
             ddl_tipo_admin.SelectedValue = ((int)data.tipo_seguro).ToString();
-            ddl_aseguradoraBusqueda.SelectedValue = data.id_aseguradora.ToString();
+            ddl_aseguradora_admin.SelectedValue = data.id_aseguradora.ToString();
             txt_cobertura_admin.Text = data.cobertura;
             txt_costo_admin.Text = data.costo.ToString();
             txt_duracion_admin.Text = data.duracion_meses.ToString();
