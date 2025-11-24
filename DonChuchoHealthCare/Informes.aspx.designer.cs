@@ -11,7 +11,7 @@ namespace DonChuchoHealthCare
 {
 
 
-    public partial class Reportes
+    public partial class Informes
     {
 
         /// <summary>

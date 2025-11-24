@@ -46,6 +46,9 @@
     <Reference Include="itext.forms, Version=9.4.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\DonChuchoHealthCare\packages\itext.9.4.0\lib\net461\itext.forms.dll</HintPath>
     </Reference>
+    <Reference Include="itext.html2pdf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DonChuchoHealthCare\packages\itext.pdfhtml.6.3.0\lib\net461\itext.html2pdf.dll</HintPath>
+    </Reference>
     <Reference Include="itext.io, Version=9.4.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\DonChuchoHealthCare\packages\itext.9.4.0\lib\net461\itext.io.dll</HintPath>
     </Reference>
@@ -106,6 +109,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\DonChuchoHealthCare\packages\System.Diagnostics.DiagnosticSource.9.0.10\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Formats.Asn1, Version=9.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\DonChuchoHealthCare\packages\System.Formats.Asn1.9.0.10\lib\net462\System.Formats.Asn1.dll</HintPath>
     </Reference>
@@ -175,14 +179,23 @@
   <ItemGroup>
     <Compile Include="CN_Aseguradora.cs" />
     <Compile Include="CN_Cliente.cs" />
-    <Compile Include="Informes.cs" />
     <Compile Include="CN_Login.cs" />
     <Compile Include="CN_Pago.cs" />
     <Compile Include="CN_Poliza.cs" />
     <Compile Include="CN_Seguro.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Informes\CertificadoPoliza.cs" />
+    <Compile Include="Informes\DataTable2Table.cs" />
+    <Compile Include="Informes\InformeVentas.cs" />
+    <Compile Include="Informes\Master.cs" />
+    <Compile Include="Informes\ReciboPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -197,6 +210,12 @@
       <Project>{a1f7ef43-f6c2-4c3d-9b6b-907c84cde614}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\DonChuchoHealthCare\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\DonChuchoHealthCare\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
