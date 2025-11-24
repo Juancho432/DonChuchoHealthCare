@@ -1,7 +1,8 @@
-﻿using System;
-using System.Data;
-using System.Configuration;
+﻿using Entidades;
 using MySql.Data.MySqlClient;
+using System;
+using System.Configuration;
+using System.Data;
 
 namespace CapaDatos
 {
@@ -11,7 +12,7 @@ namespace CapaDatos
         private string sql = "";
 
         //Ventas (seguros vendidos) por tipo de seguro
-        public DataTable ReporteVentasPorTipoSeguro(DateTime fechaInicio, DateTime fechaFin)
+        public DataTable ReporteVentasPorTipoSeguro(Tipo_Seguro tipo_seguron)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection cn = new MySqlConnection(cadena))
@@ -28,8 +29,7 @@ namespace CapaDatos
                 ";
 
                 MySqlCommand cmd = new MySqlCommand(sql, cn);
-                cmd.Parameters.AddWithValue("@inicio", fechaInicio);
-                cmd.Parameters.AddWithValue("@fin", fechaFin);
+                cmd.Parameters.AddWithValue("@tipo_seguro", tipo_seguron);
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);
